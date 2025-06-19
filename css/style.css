@@ -1,0 +1,431 @@
+/* --- Styles de base et reset --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* NOUVEAU : Transitions de page */
+body {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+body.is-leaving {
+    opacity: 0;
+}
+/* Fin des transitions de page */
+
+
+main {
+    min-height: calc(100vh - 135px);
+    padding-bottom: 60px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.5;
+}
+#Nom {
+    color: black;
+}
+
+/* --- Entête --- */
+#entete {
+    background-image: url('../img/bg.svg');
+    position: relative;
+    text-align: center;
+    background-size: cover;
+    background-position: center top;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    min-height: 90vh;
+}
+
+.pp { width: 15%; }
+.image_rs { width: 5%; transition: opacity 0.3s; }
+.image_rs:hover { opacity: 0.6; }
+
+/* Bouton CV */
+.download-btn {
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+.download-btn:hover {
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+}
+
+/* --- Menu de Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(20, 20, 94);
+    padding: 10px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-weight: bold;
+}
+.navbar-brand { font-size: 1.5em; color: white; font-weight: bold; }
+.navbar .menu { display: flex; list-style: none; margin: 0; padding: 0; }
+.navbar .menu li { margin: 0 15px; }
+/* --- Menu de Navigation (commun) --- */
+/* ... les autres règles .navbar, .navbar-brand, etc. restent les mêmes ... */
+
+.navbar .menu li { margin: 0 15px; }
+
+.navbar a {
+    /* 1. On change la couleur par défaut du texte */
+    color: #ffffff; /* Le bleu utilisé pour l'état actif */
+    background-color: transparent; /* Fond transparent par défaut */
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold; /* On peut renforcer un peu le poids pour la lisibilité */
+    /* 2. On ajoute 'color' à la transition pour un changement de couleur fluide */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar a:hover, .navbar a.active {
+    /* 3. Au survol ou sur la page active, on inverse les couleurs */
+    background-color: #0953a3; /* Le fond devient bleu */
+    color: white;              /* Le texte redevient blanc */
+}
+
+.navbar-toggler { display: none; background: none; border: 2px solid white; border-radius: 5px; color: white; font-size: 1.5rem; cursor: pointer; }
+
+
+/* --- Sections de contenu --- */
+#presentation, #portfolio, #moodboard, #contact {
+    background-color: whitesmoke;
+    border-bottom: 1px solid rgb(218, 212, 212);
+    padding: 50px 20px 30px 20px;
+    text-align: center;
+}
+
+/* --- Styles pour la page CV (index.html) --- */
+#competences, #parcours {
+    background-color: #fdfdfd; /* Un peu différent pour varier */
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgb(218, 212, 212);
+}
+
+#competences h2, #parcours h2 {
+    margin-bottom: 40px;
+}
+
+.competences-grid, .parcours-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    text-align: left;
+}
+
+.competence-card, .parcours-item {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.competence-card h3 {
+    color: rgb(20, 20, 94);
+    margin-bottom: 15px;
+}
+
+.competence-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.competence-card li {
+    padding-bottom: 8px;
+}
+
+.parcours-item h3 {
+    border-bottom: 2px solid rgb(20, 20, 94);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* --- Portfolio --- */
+.conteneur-btn { display: flex; justify-content: center; gap: 15px; padding: 40px 0; }
+.bouton {
+    padding: 10px 20px; font-size: 16px; border: 2px solid rgb(20, 20, 94);
+    border-radius: 5px; background-color: transparent; color: rgb(20, 20, 94);
+    cursor: pointer; font-weight: bold; transition: background-color 0.3s, color 0.3s;
+}
+.bouton.active, .bouton:hover { background-color: rgb(20, 20, 94); color: #ffffff; text-decoration: none; }
+
+#projets { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+
+.projet-item {
+    width: 30%; display: block;
+    transition: transform 0.3s ease, opacity 0.4s ease, width 0.3s ease;
+    transform: scale(1); opacity: 1;
+}
+.projet-item.hidden {
+    transform: scale(0.9); opacity: 0;
+    width: 0 !important; padding: 0; margin: 0;
+    overflow: hidden;
+}
+.projet-item img { width: 100%; height: auto; display: block; }
+.projet-item:hover { transform: scale(1.05); filter: brightness(90%); }
+
+
+/* --- Popups (Overlays) avec CENTRAGE PARFAIT --- */
+.overlay {
+    position: fixed; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+    
+    /* 1. On transforme l'overlay en conteneur Flexbox */
+    display: flex;
+    align-items: center;     /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    
+    /* 2. On ajoute un peu de padding pour que le popup ne colle pas aux bords sur mobile */
+    padding: 20px;
+    box-sizing: border-box;
+
+    /* 3. Animation d'entrée */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s;
+}
+
+.overlay:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.overlay:target .popup_block {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+.overlayLink { 
+    color: black; 
+    font-weight: bold; 
+    text-decoration: underline; 
+}
+.overlayLink:hover { 
+    color: #0953a3; 
+}
+
+.popup_block {
+    background: #fff; 
+    padding: 25px; 
+    border: 5px solid #ddd;
+    position: relative; 
+    
+    /* margin: 10% auto; */ /* <-- SUPPRIMÉ */
+    
+    width: 90%; /* On utilise une largeur relative pour la flexibilité */
+    max-width: 700px; /* Mais on la limite pour les grands écrans */
+    box-shadow: 0 0 20px #000; 
+    border-radius: 10px;
+    
+    /* 5. On gère le contenu qui dépasse avec une barre de scroll interne */
+    max-height: 90vh; /* Le popup ne dépassera jamais 90% de la hauteur de l'écran */
+    overflow-y: auto;   /* Ajoute une barre de scroll si le contenu est trop long */
+    
+    /* 6. Animation d'entrée */
+    transform: scale(0.95) translateY(20px);
+    opacity: 0;
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.popup_block img { 
+    width: 100%; 
+    max-width: 400px; 
+    margin: 15px auto; 
+    display: block; 
+}
+
+.popup_block .close {
+    position: absolute; 
+    top: 15px; 
+    right: 20px;
+    font-size: 2rem; 
+    color: #333; 
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.popup_block .close:hover { 
+    color: #d9534f; 
+}
+
+/* Style pour les détails dans les popups */
+.popup-details {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    text-align: left;
+}
+.popup-details p {
+    margin-bottom: 5px;
+}
+
+
+/* --- Moodboard --- */
+#moodboard-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; padding-top: 30px;
+}
+.moodboard-item { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.moodboard-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.moodboard-caption {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    background: rgba(0, 0, 0, 0.6); color: white; padding: 10px;
+    text-align: center; font-size: 1.1em;
+}
+
+/* --- Formulaire de Contact --- */
+#contact-form { max-width: 600px; margin: 30px auto; text-align: left; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; color: #333; }
+.form-group input, .form-group textarea {
+    width: 100%; padding: 10px; border: 1px solid #ccc;
+    border-radius: 5px; box-sizing: border-box; font-family: inherit;
+}
+.bouton-form {
+    display: block; width: 100%; padding: 15px; background-color: #007BFF;
+    color: white; border: none; border-radius: 5px; font-size: 1.1em;
+    font-weight: bold; cursor: pointer; transition: background-color 0.3s;
+}
+.bouton-form:hover { background-color: darkblue; }
+
+/* --- Pied de page --- */
+footer {
+    background-color: rgb(20, 20, 94); color: white; text-align: center;
+    padding: 20px; position: relative; bottom: 0; width: 100%;
+}
+
+/* --- TRANSITION DE PAGE : FADE & MOVE (Version finale) --- */
+html {
+    /* Le fond redevient normal une fois la page prête */
+    background-color: whitesmoke;
+}
+
+body {
+    /* On définit la transition pour l'opacité et la transformation (le mouvement) */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* ANIMATION D'ENTRÉE : la page apparaît en fondu et léger mouvement */
+body.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ÉTAT DE SORTIE : la page disparaît en fondu et léger mouvement */
+body.is-leaving {
+    opacity: 0;
+    transform: translateY(15px); /* La page descend un peu avant de disparaître */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .pp { width: 30%; }
+    .image_rs { width: 10%; }
+    #entete { min-height: auto; padding: 40px 20px; }
+
+    .navbar-toggler { display: block; }
+    .navbar .menu {
+        display: none; flex-direction: column; width: 100%;
+        position: absolute; top: 70px;
+        left: 0; background-color: rgb(20, 20, 94);
+    }
+    .navbar .menu.active { display: flex; }
+    .navbar .menu li { text-align: center; margin: 0; width: 100%; border-top: 1px solid #0953a3; }
+
+    .conteneur-btn { flex-direction: column; gap: 10px; }
+    .projet-item, .projet-item.hidden { width: 80% !important; }
+    .popup_block { width: 90%; }
+}
+
+/* --- STYLES POUR LE MODE SOMBRE --- */
+.theme-btn {
+    background: none;
+    border: 2px solid #0953a3;
+    color: #0953a3;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.theme-btn:hover {
+    background-color: #0953a3;
+    color: white;
+}
+
+body.dark-mode {
+    /* Fond général */
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Sections en mode sombre */
+body.dark-mode #presentation,
+body.dark-mode #portfolio,
+body.dark-mode #moodboard,
+body.dark-mode #contact,
+body.dark-mode #competences,
+body.dark-mode #parcours,
+body.dark-mode .page-wrapper {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+
+/* Textes et titres en mode sombre */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode p,
+body.dark-mode label,
+body.dark-mode .competence-card h3,
+body.dark-mode .parcours-item h3 {
+    color: #f5f5f5;
+}
+
+body.dark-mode #Nom { color: white; }
+
+/* Cartes et formulaires en mode sombre */
+body.dark-mode .competence-card,
+body.dark-mode .parcours-item,
+body.dark-mode .popup_block {
+    background-color: #2a2a2a;
+    box-shadow: none;
+}
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background-color: #333;
+    border-color: #555;
+    color: white;
+}
