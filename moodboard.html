@@ -10,9 +10,9 @@
     <style>
         /* Force le fond de la page entière à être noir pendant la transition */
         html {
-            background-color: rgb(20, 20, 94); /* Un gris très foncé, presque noir */
+            background-color: rgb(20, 20, 94);
         }
-        /* Cache le body par défaut pour le faire apparaître en fondu */
+        /* Cache le body pour le faire apparaître en fondu */
         body {
             opacity: 0;
         }
@@ -22,12 +22,17 @@
 
     <!-- Menu de navigation -->
     <nav class="navbar">
-        <span class="navbar-brand">Tom DAVY</span>
-            <!-- Bouton Mode Sombre -->
+        <a href="index.html" class="navbar-brand">
+            <img src="img/Logo_Davy.png" alt="Logo de Tom Davy">
+        </a>            <!-- Bouton Mode Sombre -->
         <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+
+        <!-- Bouton "hamburger" -->
         <button class="navbar-toggler" type="button">
             <i class="fas fa-bars"></i>
         </button>
+
+        <!-- Menus -->
         <ul class="menu">
             <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
             <li><a href="portfolio.html"><i class="fas fa-book-open"></i> Portfolio</a></li>
@@ -36,23 +41,23 @@
         </ul>
     </nav>
     
+    <!-- Main-->
     <main>
         <section id="moodboard">
             <h1>Mon univers</h1>
             <p>Quelques images qui représentent mes passions et inspirations.</p>
             <div class="moodboard-grid">
-                <div class="moodboard-item"><img src="img/football.jpg" alt="Passion Football"><div class="moodboard-caption">Le Football</div></div>
-                <div class="moodboard-item"><img src="img/game-dev.jpg" alt="Inspiration Game Dev"><div class="moodboard-caption">Le Game Development</div></div>
-                <div class="moodboard-item"><img src="img/music.jpg" alt="Passion Musique"><div class="moodboard-caption">La Musique</div></div>
-                <div class="moodboard-item"><img src="img/tech.jpg" alt="Inspiration Tech"><div class="moodboard-caption">La Technologie</div></div>
+                <div class="moodboard-item"><img src="img/moodboard.png" alt="Moodboard de DAVY Tom"><div class="moodboard-caption">Mon moodboard</div></div>
             </div>
         </section>
     </main>
     
+    <!-- Footer -->
     <footer>
         <p>© 2024 - Portefolio Tom DAVY</p>
     </footer>
 
+    <!-- Lien vers le Javascript -->
     <script src="js/script.js"></script>
 </body>
 </html>

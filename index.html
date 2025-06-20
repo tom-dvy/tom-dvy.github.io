@@ -3,124 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Accueil - Tom DAVY</title>
+
+    <!-- LIENS VERS LES FEUILLES DE STYLE CSS -->
     <link href="../css/style.css" rel="stylesheet">
+
+    <!-- Lien vers Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Lien vers Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Force le fond de la page entière à être noir pendant la transition */
         html {
-            background-color: rgb(20, 20, 94); /* Un gris très foncé, presque noir */
+            background-color: rgb(20, 20, 94);
         }
-        /* Cache le body par défaut pour le faire apparaître en fondu */
+        /* Cache le body pour le faire apparaître en fondu */
         body {
             opacity: 0;
         }
     </style>
 </head>
 <body>
-
-    <!-- Menu de navigation (commun à toutes les pages) -->
+    <!-- BARRE DE NAVIGATION -->
     <nav class="navbar">
-        <span class="navbar-brand">Tom DAVY</span>
-        <!-- Bouton Mode Sombre -->
-        <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+        <a href="index.html" class="navbar-brand">
+            <img src="img/Logo_Davy.png" alt="Logo de Tom Davy">
+        </a>
+        
+        <!-- Bouton pour changer entre le mode clair et le mode sombre. -->
+        <button id="theme-toggle" class="theme-btn" title="Changer de thème"><i class="fas fa-moon"></i></button>
+        
+        <!-- Bouton "hamburger" -->
         <button class="navbar-toggler" type="button">
             <i class="fas fa-bars"></i>
         </button>
+        
+        <!-- Menus -->
         <ul class="menu">
             <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
             <li><a href="portfolio.html"><i class="fas fa-book-open"></i> Portfolio</a></li>
             <li><a href="moodboard.html"><i class="fas fa-palette"></i> Moodboard</a></li>
-            <li><a href="contact.html"><i class="fas fa-message"></i> Contact</a></li>       
+            <li><a href="contact.html"><i class="fas fa-message"></i> Contact</a></li>
         </ul>
     </nav>
 
+    <!-- Main -->
     <main>
-        <!-- Entête -->
+
+        <!-- --- Section En-tête --- -->
         <header id="entete">
             <div id="moi">
                 <div class="col-md-12 ml-3 mb-5">
-                    <img class="rounded-circle pp" src="img/pp.png" alt="Photo de profil de Tom DAVY">
-                    <h1 id="Nom">Tom DAVY</h1>
+                    <!-- Photo de profil. -->
+                    <img class="rounded-circle pp" src="../img/pp.png" alt="Photo de profil de Tom DAVY">
+                    
+                    <!-- Nom animé -->
+                    <div class="animated-name-container">
+                        <svg viewBox="0 0 960 300">
+                            <symbol id="s-text">
+                                <text text-anchor="middle" x="50%" y="80%">Tom DAVY</text>
+                            </symbol>
+                            
+                            <!-- Pour créer l'animation -->
+                            <g class="g-ants">
+                                <use xlink:href="#s-text" class="text-copy"></use>
+                                <use xlink:href="#s-text" class="text-copy"></use>
+                                <use xlink:href="#s-text" class="text-copy"></use>
+                                <use xlink:href="#s-text" class="text-copy"></use>
+                                <use xlink:href="#s-text" class="text-copy"></use>
+                            </g>
+                        </svg>
+                    </div>
                 </div>
+
+                <!-- Liens vers les réseaux sociaux. -->
                 <div class="col-md-12 ml-3" id="rs">
-                    <a href="https://www.facebook.com/home.php" title="Facebook"><img src="img/logoFB.png" class="image_rs" alt="Facebook"></a>
-                    <a href="https://www.instagram.com/tom_dvy23/" title="Instagram"><img src="img/logoIG.png" class="image_rs" alt="Instagram"></a>
-                    <a href="https://www.linkedin.com/in/tom-davy-824501288/" title="LinkedIn"><img src="img/logoLinked.png" class="image_rs" alt="LinkedIn"></a>
-                    <a href="mailto:tomdavy49@gmail.com?subject=Contact | Portefolio" title="Mail"><img src="img/logoMail.png" class="image_rs" alt="Mail"></a>
+                    <a href="https://www.facebook.com/home.php" title="Facebook"><img src="../img/logoFB.png" class="image_rs" alt="Facebook"></a>
+                    <a href="https://www.instagram.com/tom_dvy23/" title="Instagram"><img src="../img/logoIG.png" class="image_rs" alt="Instagram"></a>
+                    <a href="https://www.linkedin.com/in/tom-davy-824501288/" title="LinkedIn"><img src="../img/logoLinked.png" class="image_rs" alt="LinkedIn"></a>
                 </div>
-                <div class="col-md-12 ml-3 cv" id="CV"><br>
-                    <a href="link/CV_DAVY.pdf" download target="_blank" class="download-btn" title="CV de Tom DAVY"><i class="fa-solid fa-angles-down"></i> Télécharger mon CV</a>
+                
+                <!-- Bouton de téléchargement du CV. -->
+                <div class="col-md-12 ml-3 cv" id="CV">
+                    <br>
+                    <a href="link/CV_DAVY.pdf" download target="_blank" class="download-btn" title="CV de Tom DAVY">
+                        <i class="fa-solid fa-angles-down"></i> Télécharger mon CV
+                    </a>
                 </div>
             </div>
         </header>
 
-        <!-- Présentation -->
+        <!-- --- Section Présentation --- -->
         <section id="presentation">
             <h1>Présentation</h1>
-            <p>Âgé de 20 ans, je suis actuellement étudiant en 1ère année à l'IIM, avec pour objectif professionnel de devenir Game Programmer.<br> Dans mon cursus j'étudie le digital dans sa globalité (Marketing, 3D, Jeux Vidéo, ...), pour ensuite me spécialiser dans l'axe Game Programming.<br> Avant d'intégrer l'IIM, j'ai pu réaliser un BAC général ainsi qu'un BTS SNIR.<br> Enfin je suis un grand passionné de football, de jeux vidéo ainsi que de musique.</p>
+            <p>
+                Âgé de 20 ans, je suis actuellement étudiant en 1ère année à l'IIM, avec pour objectif professionnel de devenir Game Programmer.<br>
+                Dans mon cursus j'étudie le digital dans sa globalité (Marketing, 3D, Jeux Vidéo, ...), pour ensuite me spécialiser dans l'axe Game Programming.<br>
+                Avant d'intégrer l'IIM, j'ai pu réaliser un BAC général ainsi qu'un BTS SNIR.<br>
+                Enfin je suis un grand passionné de football, de jeux vidéo ainsi que de musique.
+            </p>
         </section>
 
-        <!-- Compétences -->
+        <!-- --- Section Compétences --- -->
         <section id="competences">
-        <h2>Mes Compétences</h2>
-        <div class="competences-grid">
-            <div class="competence-card">
-                <h3><i class="fas fa-code"></i> Développement Web</h3>
-                <ul>
-                    <li>HTML5, CSS3 (Flexbox, Grid)</li>
-                    <li>JavaScript (ES6)</li>
-                    <li>Bases de PHP et SQL</li>
-                    <li>Responsive Design</li>
-                </ul>
-            </div>
-            <div class="competence-card">
-                <h3><i class="fas fa-gamepad"></i> Game Programming</h3>
-                <ul>
-                    <li>Bases du C# (avec Monogame)</li>
-                    <li>Logique de jeu et mécaniques</li>
-                    <li>Compréhension des moteurs de jeu</li>
-                </ul>
-            </div>
-            <div class="competence-card">
-                <h3><i class="fas fa-cube"></i> Outils & Logiciels</h3>
-                <ul>
-                    <li>Git & GitHub</li>
-                    <li>Visual Studio Code</li>
-                    <li>Blender (Modélisation 3D)</li>
-                    <li>Suite Adobe (Photoshop, Illustrator)</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+            <h2>Mes Compétences</h2>
+            <div class="competences-grid">
+                <div class="competence-card">
+                    <h3><i class="fas fa-code"></i> Langages de programmation</h3>
+                    <ul>
+                        <li>HTML5, CSS, JavaScript</li>
+                        <li>Java, C, C++, C#</li>
+                        <li>Bases de PHP et SQL</li>
+                    </ul>
+                </div>
 
-    <!-- Parcours -->
-    <section id="parcours">
-        <h2>Parcours</h2>
-        <div class="parcours-grid">
-            <div class="parcours-item">
-                <h3>Formation</h3>
-                <p><strong>2023 - Aujourd'hui :</strong> Bachelor - IIM Digital School</p>
-                <p><strong>2021 - 2023 :</strong> BTS SNIR (Systèmes Numériques option Informatique et Réseaux)</p>
-                <p><strong>2021 :</strong> Baccalauréat Général</p>
+                <div class="competence-card">
+                    <h3><i class="fas fa-cube"></i> Outils & Logiciels</h3>
+                    <ul>
+                        <li>Unity, Blender</li>
+                        <li>Photoshop, After Effects</li>
+                        <li>Eclipse, VS Code</li>
+                    </ul>
+                </div>
+
+                <div class="competence-card">
+                    <h3><i class="fas fa-language"></i> Langues</h3>
+                    <ul>
+                        <li>Anglais (B2)</li>
+                        <li>Espagnol (A2)</li>
+                    </ul>
+                </div>
+
+                <div class="competence-card">
+                    <h3><i class="fas fa-asterisk"></i> Soft Skills</h3>
+                    <ul>
+                        <li>Travail d'équipe</li>
+                        <li>Écoute & Polyvalence</li>
+                        <li>Discipline & Ponctualité</li>
+                    </ul>
+                </div>
             </div>
-            <div class="parcours-item">
-                <h3>Expériences</h3>
-                <p><strong>2023 :</strong> Projet "Hyrome Fighter" (Développeur C#)</p>
-                <p><strong>2022 :</strong> Stage de 1ère année de BTS (décrivez brièvement ici)</p>
-                <p><em>(Ajoutez ici d'autres projets pertinents ou expériences)</em></p>
+        </section>
+
+        <!-- --- Section Parcours --- -->
+        <section id="parcours">
+            <h2>Parcours</h2>
+            <div class="parcours-grid">
+                <div class="parcours-item">
+                    <h3>Formations</h3>
+                    <p><strong>2024 - Aujourd'hui :</strong> Bachelor Jeux Vidéo - IIM Digital School, Nantes</p>
+                    <p><strong>2022 - 2024 :</strong> BTS SNIR - Lycée de l'Hyrôme, Chemillé</p>
+                    <p><strong>2020-2021 :</strong> Baccalauréat Général (Spé. NSI & LLCE Anglais) - Lycée Henri Bergson, Angers</p>
+                </div>
+                <div class="parcours-item">
+                    <h3>Expériences Professionnelles</h3>
+                    <p><strong>Nov. 2024 - Mai 2025 :</strong> Préparateur de commande - Carrefour Supply Chain, Cholet</p>
+                    <p><strong>Juillet - Août 2024 :</strong> Agent d'entretien & Placier - O’Gliss Park, Le Bernard</p>
+                    <p><strong>Jan. - Juin 2024 :</strong> Équipier polyvalent - McDonald’s, Chemillé-en-Anjou</p>
+                    <p><strong>Mai - Juillet 2023 :</strong> Stagiaire développeur - Entreprise EDRIS, Beaupreau-en-Mauges</p>
+                    <p><strong>Janvier 2021 :</strong> Stagiaire développeur Web - Olivier Ortion, Montjean-sur-Loire</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
     </main>
 
-    <!-- Pied de page (commun à toutes les pages) -->
+    <!-- Footer -->
     <footer>
-        <p>© 2024 - Portefolio Tom DAVY</p>
+        <p>© 2025 - Portfolio Tom DAVY</p>
     </footer>
 
-    <!-- On charge le script à la fin -->
-    <script src="js/script.js"></script>
+    <!-- Lien vers le Javascript -->
+    <script src="../js/script.js"></script>
+
 </body>
 </html>

@@ -1,21 +1,10 @@
-/* --- Styles de base et reset --- */
+/* --- Styles de base --- */
 html, body {
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-/* NOUVEAU : Transitions de page */
-body {
-    opacity: 1;
-    transition: opacity 0.4s ease-in-out;
-}
-body.is-leaving {
-    opacity: 0;
-}
-/* Fin des transitions de page */
-
 
 main {
     min-height: calc(100vh - 135px);
@@ -35,6 +24,16 @@ p {
 #Nom {
     color: black;
 }
+
+/* Transitions de page */
+body {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+body.is-leaving {
+    opacity: 0;
+}
+/* Fin des transitions de page */
 
 /* --- Entête --- */
 #entete {
@@ -75,45 +74,75 @@ p {
 /* --- Menu de Navigation --- */
 .navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Espace mon prénom et le menu */
+    align-items: center;         /* Aligne tout le contenu au centre */
     background-color: rgb(20, 20, 94);
-    padding: 10px 30px;
+    padding: 20px 40px;
     position: sticky;
     top: 0;
     z-index: 1000;
     font-weight: bold;
 }
-.navbar-brand { font-size: 1.5em; color: white; font-weight: bold; }
-.navbar .menu { display: flex; list-style: none; margin: 0; padding: 0; }
-.navbar .menu li { margin: 0 15px; }
-/* --- Menu de Navigation (commun) --- */
-/* ... les autres règles .navbar, .navbar-brand, etc. restent les mêmes ... */
 
-.navbar .menu li { margin: 0 15px; }
+/* Mon logo à gauche */
+.navbar-brand {
+    padding: 0;
+    height: 90px; 
+    
+    width: auto; 
+}
 
+.navbar-brand img {
+    height: 90px; 
+    
+    width: auto; 
+
+    vertical-align: middle; 
+}
+
+/* Le conteneur du menu à droite */
+.navbar .menu { 
+    display: flex; 
+    align-items: center;
+    list-style: none; 
+    margin: 0; 
+    padding: 0;
+    gap: 15px; /* Pour espacer les éléments */
+}
+
+.navbar .menu li { 
+    margin: 0; 
+}
+
+/* Les liens dans le menu */
 .navbar a {
-    /* 1. On change la couleur par défaut du texte */
-    color: #ffffff; /* Le bleu utilisé pour l'état actif */
-    background-color: transparent; /* Fond transparent par défaut */
+    color: #ffffff;
+    background-color: transparent;
     padding: 10px 15px;
     text-decoration: none;
     border-radius: 4px;
-    font-weight: bold; /* On peut renforcer un peu le poids pour la lisibilité */
-    /* 2. On ajoute 'color' à la transition pour un changement de couleur fluide */
+    font-weight: bold;
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Le survol et l'état actif des liens */
 .navbar a:hover, .navbar a.active {
-    /* 3. Au survol ou sur la page active, on inverse les couleurs */
-    background-color: #0953a3; /* Le fond devient bleu */
-    color: white;              /* Le texte redevient blanc */
+    background-color: #0953a3;
+    color: white;
 }
 
-.navbar-toggler { display: none; background: none; border: 2px solid white; border-radius: 5px; color: white; font-size: 1.5rem; cursor: pointer; }
+/* Le bouton hamburger pour mobile */
+.navbar-toggler { 
+    display: none; 
+    background: none; 
+    border: 2px solid white; 
+    border-radius: 5px; 
+    color: white; 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+}
 
-
-/* --- Sections de contenu --- */
+/* --- Différentes pages --- */
 #presentation, #portfolio, #moodboard, #contact {
     background-color: whitesmoke;
     border-bottom: 1px solid rgb(218, 212, 212);
@@ -123,7 +152,7 @@ p {
 
 /* --- Styles pour la page CV (index.html) --- */
 #competences, #parcours {
-    background-color: #fdfdfd; /* Un peu différent pour varier */
+    background-color: #fdfdfd;
     padding: 50px 20px;
     text-align: center;
     border-bottom: 1px solid rgb(218, 212, 212);
@@ -176,6 +205,7 @@ p {
     border-radius: 5px; background-color: transparent; color: rgb(20, 20, 94);
     cursor: pointer; font-weight: bold; transition: background-color 0.3s, color 0.3s;
 }
+
 .bouton.active, .bouton:hover { background-color: rgb(20, 20, 94); color: #ffffff; text-decoration: none; }
 
 #projets { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
@@ -185,6 +215,8 @@ p {
     transition: transform 0.3s ease, opacity 0.4s ease, width 0.3s ease;
     transform: scale(1); opacity: 1;
 }
+
+/* Pour cacher les projets */
 .projet-item.hidden {
     transform: scale(0.9); opacity: 0;
     width: 0 !important; padding: 0; margin: 0;
@@ -194,7 +226,7 @@ p {
 .projet-item:hover { transform: scale(1.05); filter: brightness(90%); }
 
 
-/* --- Popups (Overlays) avec CENTRAGE PARFAIT --- */
+/* --- Popups (Overlays) --- */
 .overlay {
     position: fixed; 
     top: 0; 
@@ -203,17 +235,15 @@ p {
     left: 0;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 1001;
-    
-    /* 1. On transforme l'overlay en conteneur Flexbox */
     display: flex;
     align-items: center;     /* Centre verticalement */
     justify-content: center; /* Centre horizontalement */
     
-    /* 2. On ajoute un peu de padding pour que le popup ne colle pas aux bords sur mobile */
+    /* Padding pour que le popup ne colle pas aux bords sur mobile */
     padding: 20px;
     box-sizing: border-box;
 
-    /* 3. Animation d'entrée */
+    /* Animation d'entrée */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease-in-out, visibility 0.4s;
@@ -243,19 +273,12 @@ p {
     padding: 25px; 
     border: 5px solid #ddd;
     position: relative; 
-    
-    /* margin: 10% auto; */ /* <-- SUPPRIMÉ */
-    
-    width: 90%; /* On utilise une largeur relative pour la flexibilité */
-    max-width: 700px; /* Mais on la limite pour les grands écrans */
+    width: 90%;
+    max-width: 700px;
     box-shadow: 0 0 20px #000; 
     border-radius: 10px;
-    
-    /* 5. On gère le contenu qui dépasse avec une barre de scroll interne */
-    max-height: 90vh; /* Le popup ne dépassera jamais 90% de la hauteur de l'écran */
+    max-height: 90vh; 
     overflow-y: auto;   /* Ajoute une barre de scroll si le contenu est trop long */
-    
-    /* 6. Animation d'entrée */
     transform: scale(0.95) translateY(20px);
     opacity: 0;
     transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
@@ -298,6 +321,7 @@ p {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px; padding-top: 30px;
 }
+
 .moodboard-item { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 .moodboard-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .moodboard-caption {
@@ -327,14 +351,14 @@ footer {
     padding: 20px; position: relative; bottom: 0; width: 100%;
 }
 
-/* --- TRANSITION DE PAGE : FADE & MOVE (Version finale) --- */
+/* --- Transition de page --- */
 html {
     /* Le fond redevient normal une fois la page prête */
     background-color: whitesmoke;
 }
 
 body {
-    /* On définit la transition pour l'opacité et la transformation (le mouvement) */
+    /* Mouvement */
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
@@ -344,30 +368,10 @@ body.is-visible {
     transform: translateY(0);
 }
 
-/* ÉTAT DE SORTIE : la page disparaît en fondu et léger mouvement */
+/* ANIMATION DE SORTIE : la page disparaît en fondu et léger mouvement */
 body.is-leaving {
     opacity: 0;
     transform: translateY(15px); /* La page descend un peu avant de disparaître */
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    .pp { width: 30%; }
-    .image_rs { width: 10%; }
-    #entete { min-height: auto; padding: 40px 20px; }
-
-    .navbar-toggler { display: block; }
-    .navbar .menu {
-        display: none; flex-direction: column; width: 100%;
-        position: absolute; top: 70px;
-        left: 0; background-color: rgb(20, 20, 94);
-    }
-    .navbar .menu.active { display: flex; }
-    .navbar .menu li { text-align: center; margin: 0; width: 100%; border-top: 1px solid #0953a3; }
-
-    .conteneur-btn { flex-direction: column; gap: 10px; }
-    .projet-item, .projet-item.hidden { width: 80% !important; }
-    .popup_block { width: 90%; }
 }
 
 /* --- STYLES POUR LE MODE SOMBRE --- */
@@ -428,4 +432,237 @@ body.dark-mode .form-group textarea {
     background-color: #333;
     border-color: #555;
     color: white;
+}
+
+
+/* --- STYLES POUR LE CARROUSEL 3D --- */
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    perspective: 1000px;
+    margin-top: 50px;
+    position: relative;
+}
+
+.slides {
+    display: grid;
+    transform-style: preserve-3d;
+}
+
+.slides > .slide {
+    grid-area: 1 / -1;
+    width: 25vw;
+    min-width: 250px;
+    max-width: 350px;
+    height: 35vw;
+    min-height: 350px;
+    max-height: 490px;
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0; /*Elles sont invisibles par défaut */
+    pointer-events: none; /* Elles ne sont pas cliquables */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    transform-style: preserve-3d;
+    transform: translateX(calc(80% * var(--offset))) rotateY(calc(-45deg * var(--dir))) scale(0.9);
+}
+
+.slide[data-hidden="true"] {
+    opacity: 0;
+    visibility: hidden; /* Rend l'élément complètement non-interactif */
+}
+
+/* Style de la slide active */
+.slide[data-active] {
+    opacity: 1;
+    z-index: 2;
+    transform: translateX(0) rotateY(0);
+    pointer-events: auto;
+}
+
+/* Effet 3D au survol de la slide active */
+.slide[data-active]:hover {
+    transition: transform 0.1s; /* Transition rapide pour l'effet */
+    transform: rotateY(calc(var(--x) * 25deg)) rotateX(calc(var(--y) * -25deg));
+}
+
+.slide-content-inner {
+    transform: translateZ(40px); /* Effet de profondeur */
+    color: white;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slide[data-active] .slide-content-inner {
+    opacity: 1;
+    transition-delay: 0.2s; /* Apparaît après que la slide soit en place */
+}
+
+.slide-title { font-size: 1.8rem; font-weight: bold; margin: 0; }
+.slide-subtitle { font-size: 1rem; margin: 5px 0 15px 0; }
+.slide-description { font-size: 0.9rem; letter-spacing: 0.5px; color: white;}
+.slide-details { margin-top: 15px; border-top: 1px solid rgba(52, 9, 9, 0.4); padding-top: 10px; font-size: 0.8rem; }
+
+/* Boutons de navigation du carrousel */
+.carousel-nav {
+    appearance: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    color: rgb(20, 20, 94);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 0;
+    
+    transition: all 0.3s ease;
+}
+
+.carousel-nav:hover {
+    /* Au survol, le conteneur devient bleu */
+    background: rgb(20, 20, 94);
+    border-color: rgb(20, 20, 94);
+    
+    /* La flèche devient blanche */
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav.prev {
+    left: 10%; 
+}
+.carousel-nav.next {
+    right: 10%; 
+}
+
+
+/* --- STYLES POUR LE NOM ANIMÉ EN SVG --- */
+
+/* Import de la police Montserrat */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/* Conteneur pour le SVG pour le dimensionner correctement */
+.animated-name-container {
+    width: 100%;
+    max-width: 400px; /* Agrandir/rétrécir le nom */
+    margin: 0px auto 0 auto; /* Espace au-dessus et centrage horizontal */
+}
+
+/* Styles du SVG et de la police */
+.animated-name-container svg {
+    display: block;
+    width: 100%;
+    height: auto; /* Hauteur automatique pour garder les proportions */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 8em;
+}
+
+/* Styles pour les contours animés */
+.text-copy {
+    fill: none;
+    stroke: white; /* Couleur de base des pointillés */
+    stroke-dasharray: 6% 29%;
+    stroke-width: 3px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+/* Couleurs */
+.text-copy:nth-child(1){
+	stroke: #00F6FF; 
+	animation-delay: -1s;
+}
+
+.text-copy:nth-child(2){
+	stroke: #ffffff; 
+	animation-delay: -2s;
+}
+
+.text-copy:nth-child(3){
+	stroke: #eaa80c; 
+	animation-delay: -3s;
+}
+
+.text-copy:nth-child(4){
+	stroke: #00F6FF; 
+	animation-delay: -4s;
+}
+
+.text-copy:nth-child(5){
+	stroke: #eaa80c; 
+	animation-delay: -5s;
+}
+
+
+/* L'animation qui fait bouger les pointillés */
+@keyframes stroke-offset{
+	100% { stroke-dashoffset: -35%; }
+}
+
+h1#Nom {
+    display: none;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .pp { width: 30%; }
+    .image_rs { width: 10%; }
+    #entete { min-height: auto; padding: 40px 20px; }
+
+    .navbar-toggler { display: block; }
+    .navbar .menu {
+        display: none; flex-direction: column; width: 100%;
+        position: absolute; top: 70px;
+        left: 0; background-color: rgb(20, 20, 94);
+    }
+    .navbar .menu.active { display: flex; }
+    .navbar .menu li { text-align: center; margin: 0; width: 100%; border-top: 1px solid #0953a3; }
+
+    .conteneur-btn { flex-direction: column; gap: 10px; }
+    .projet-item, .projet-item.hidden { width: 80% !important; }
+    .popup_block { width: 90%; }
+}
+
+
+@media (max-width: 768px) {
+    .carousel-nav {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.8);
+        width: 40px;
+        height: 40px;
+    }
+    .carousel-nav.prev { left: 15px; }
+    .carousel-nav.next { right: 15px; }
+}
+
+/* --- Responsive pour les flèches --- */
+@media (max-width: 1200px) { /* Point de rupture pour grands écrans */
+    .carousel-nav.prev { left: 5%; }
+    .carousel-nav.next { right: 5%; }
+}
+
+@media (max-width: 992px) { /* Point de rupture pour tablettes */
+    .carousel-nav.prev { left: 2%; }
+    .carousel-nav.next { right: 2%; }
 }

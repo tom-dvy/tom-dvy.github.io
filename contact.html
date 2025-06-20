@@ -10,21 +10,26 @@
     <style>
         /* Force le fond de la page entière à être noir pendant la transition */
         html {
-            background-color: rgb(20, 20, 94); /* Un gris très foncé, presque noir */
+            background-color: rgb(20, 20, 94);
         }
-        /* Cache le body par défaut pour le faire apparaître en fondu */
+        /* Cache le body pour le faire apparaître en fondu */
         body {
             opacity: 0;
         }
     </style>
 </head>
 <body>
-    <!--Menu-->
+    <!-- Menu de navigation -->
     <nav class="navbar">
-        <span class="navbar-brand">Tom DAVY</span>
-        <!-- Bouton Mode Sombre -->
+        <a href="index.html" class="navbar-brand">
+            <img src="img/Logo_Davy.png" alt="Logo de Tom Davy">
+        </a>        <!-- Bouton Mode Sombre -->
         <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+
+        <!-- Bouton "hamburger" -->
         <button class="navbar-toggler" type="button"><i class="fas fa-bars"></i></button>
+
+        <!-- Menus -->
         <ul class="menu">
             <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
             <li><a href="portfolio.html"><i class="fas fa-book-open"></i> Portfolio</a></li>
@@ -36,8 +41,9 @@
     <main>
         <section id="contact">
             <h1>Contactez-moi</h1>
-            <p>Une question, une proposition ou simplement envie de discuter ?<br>N'hésitez pas à utiliser le formulaire ci-dessous ou à m'envoyer un <a href="mailto:tomdavy49@gmail.com?subject=Contact | Portefolio" class="overlayLink">email direct</a>.</p>
+            <p>Une question, une proposition ?<br>N'hésitez pas à utiliser le formulaire ci-dessous ou à m'envoyer un <a href="mailto:tomdavy49@gmail.com?subject=Contact | Portefolio" class="overlayLink">mail</a>.</p>
             
+            <!-- Formulaire -->
             <form id="contact-form" action="https://formspree.io/f/mwpbqovn" method="POST">
                 <div class="form-group">
                     <label for="name">Nom</label>
@@ -59,11 +65,12 @@
             </form>
         </section>
     </main>
-    
+
+    <!-- Footer -->
     <footer>
         <p>© 2024 - Portefolio Tom DAVY</p>
     </footer>
-
+    <!-- Lien vers le javascript -->
     <script src="js/script.js"></script>
 </body>
 </html>
