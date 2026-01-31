@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       },
       {
-        category: "image",
+        category: "3d",
         title: "Affiche NDW",
         subtitle: "Communication Visuelle",
         description: "Proposition d'affiche pour l'événement Nantes Digital Week.",
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       },
       {
-        category: "image",
+        category: "app",
         title: "Dashboard Énergie",
         subtitle: "Data visualisation",
         description: "Interface pour la visualisation de données de consommation énergétique.",
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       },
       {
-        category: "image",
+        category: "app",
         title: "Grainothèque Connectée",
         subtitle: "Site Web",
         description: "Conception et prototypage d'un site pour une grainothèque connectée.",
