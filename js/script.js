@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
         category: "app",
         title: "Pokédex",
         subtitle: "Application",
-        description: "Conception et d'une application Pokédex fonctionnelle et accessible.",
+        description: "Conception d'une application Pokédex fonctionnelle et accessible.",
         image: "../img/pokedex.png",
         details: {
           role: "Développeur Front-End et Back-End",
