@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initThemeToggle();
 
     // --- DONNÉES DES PROJETS ---
-    // Définit un tableau d'objets contenant les informations de chaque projet du portfolio.
+    // Définit un tableau d'objets contenant les informations de chaque projet du portfolio, et un tableau "media" pour les images/vidéos du popup.
     const mesProjets = [
       {
         category: "3d",
@@ -187,6 +187,9 @@ document.addEventListener('DOMContentLoaded', function() {
         subtitle: "Modélisation 3D",
         description: "Création d'un personnage LEGO sur Blender lors d'un workshop à l'IIM.",
         image: "../img/DAVY_Tom_LegoFCB.png",
+        media: [
+          { type: 'image', src: 'img/DAVY_Tom_LegoFCB.png' }
+        ],
         details: {
           role: "Modélisateur 3D, Texturing",
           tools: "Blender"
@@ -198,6 +201,11 @@ document.addEventListener('DOMContentLoaded', function() {
         subtitle: "Jeu de Combat 2D",
         description: "Projet de fin de BTS. Un jeu de combat 2D développé avec Scratch.",
         image: "../img/HyromeFighter.PNG",
+        media: [
+          { type: 'image', src: 'img/HyromeFighter.PNG' },
+          // exemple de vidéo (ajoute le fichier videos/hyrome_demo.mp4 si tu veux une vidéo locale)
+          { type: 'video', src: 'videos/hyrome_demo.mp4' }
+        ],
         details: {
           role: "Développeur Gameplay",
           tools: "Scratch"
@@ -209,6 +217,9 @@ document.addEventListener('DOMContentLoaded', function() {
         subtitle: "Communication Visuelle",
         description: "Proposition d'affiche pour l'événement Nantes Digital Week.",
         image: "../img/Affiche Beaujoire.PNG",
+        media: [
+          { type: 'image', src: 'img/Affiche Beaujoire.PNG' }
+        ],
         details: {
           role: "Graphiste",
           tools: "Adobe Photoshop, Illustrator"
@@ -220,6 +231,9 @@ document.addEventListener('DOMContentLoaded', function() {
         subtitle: "Data visualisation",
         description: "Interface pour la visualisation de données de consommation énergétique.",
         image: "../img/ConsoEnergie.PNG",
+        media: [
+          { type: 'image', src: 'img/ConsoEnergie.PNG' }
+        ],
         details: {
           role: "Développeur Front-End",
           tools: "C, Eclipse"
@@ -231,6 +245,9 @@ document.addEventListener('DOMContentLoaded', function() {
         subtitle: "Site Web",
         description: "Conception et prototypage d'un site pour une grainothèque connectée.",
         image: "../img/ihm_accueil.png",
+        media: [
+          { type: 'image', src: 'img/ihm_accueil.png' }
+        ],
         details: {
           role: "Développeur Front-End et Back-End",
           tools: "HTML, CSS, Javascript, Nodejs"
@@ -242,6 +259,9 @@ document.addEventListener('DOMContentLoaded', function() {
         subtitle: "Application",
         description: "Conception d'une application Pokédex fonctionnelle et accessible.",
         image: "../img/pokedex.png",
+        media: [
+          { type: 'image', src: 'img/pokedex.png' }
+        ],
         details: {
           role: "Développeur Front-End et Back-End",
           tools: "HTML, CSS, Javascript, PokeAPI"
@@ -392,7 +412,87 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
+    // --- FONCTIONS POUR CARROUSEL DANS LES POPUPS (Glide.js) ---
+    const carouselInstances = new Map();
+
+    function createGlideMarkup(media, overlayId) {
+        let html = `<div class="glide" id="glide-${overlayId}"><div class="glide__track" data-glide-el="track"><ul class="glide__slides">`;
+        media.forEach(item => {
+            if (item.type === 'image') {
+                html += `<li class="glide__slide"><img src="${item.src}" alt=""></li>`;
+            } else if (item.type === 'video') {
+                html += `<li class="glide__slide"><video controls src="${item.src}"></video></li>`;
+            } else if (item.type === 'iframe') {
+                html += `<li class="glide__slide">${item.src}</li>`;
+            }
+        });
+        html += `</ul></div><div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">‹</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">›</button></div><div class="glide__bullets" data-glide-el="controls[nav]"></div></div>`;
+        return html;
+    }
+
+    function mountCarouselForOverlay(overlay) {
+        const container = overlay.querySelector('.media-carousel');
+        if (!container) return;
+        const idx = parseInt(container.dataset.projectIndex, 10);
+        const project = mesProjets[idx];
+        if (!project) return;
+        if (!project.media || project.media.length === 0) {
+            container.innerHTML = '<p>Aucun média disponible.</p>';
+            return;
+        }
+        if (carouselInstances.has(overlay.id)) return; // déjà monté
+
+        container.innerHTML = createGlideMarkup(project.media, overlay.id);
+        const glideEl = container.querySelector('.glide');
+        if (glideEl && window.Glide) {
+            const glide = new Glide(`#${glideEl.id}`, { type: 'carousel', startAt: 0, perView: 1, gap: 10 });
+            // Lors du changement de slide, on met en pause les vidéos non visibles
+            glide.on('run', () => {
+                const slides = container.querySelectorAll('.glide__slide');
+                slides.forEach((slide, i) => {
+                    const v = slide.querySelector('video');
+                    if (v) {
+                        if (i !== glide.index) { v.pause(); }
+                    }
+                });
+            });
+            glide.mount();
+            carouselInstances.set(overlay.id, { glide, container });
+        }
+    }
+
+    function destroyAllCarousels() {
+        for (const [id, inst] of carouselInstances) {
+            try { inst.glide.destroy(); } catch (e) {}
+            const vids = inst.container.querySelectorAll('video');
+            vids.forEach(v => { v.pause(); v.currentTime = 0; });
+            inst.container.innerHTML = '';
+        }
+        carouselInstances.clear();
+    }
+
+    function onHashChangeOrLoad() {
+        const hash = window.location.hash || '';
+        if (hash.startsWith('#overlay')) {
+            const overlay = document.querySelector(hash);
+            if (overlay) mountCarouselForOverlay(overlay);
+        } else {
+            // fermeture de popup
+            destroyAllCarousels();
+        }
+    }
+
+    function initOverlayCarousels() {
+        window.addEventListener('hashchange', onHashChangeOrLoad);
+        // Au chargement, si une overlay est ciblée, monter son carrousel
+        window.addEventListener('load', onHashChangeOrLoad);
+        // Appel initial (au cas où la page est chargée avec un hash)
+        onHashChangeOrLoad();
+    }
+
     // --- INITIALISATION ---
     // Appelle la fonction principale d'initialisation du portfolio.
     initPortfolio();
+    // Initialise les carrousels dans les popups (Glide.js)
+    initOverlayCarousels();
 });

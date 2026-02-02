@@ -291,6 +291,18 @@ body.is-leaving {
     display: block; 
 }
 
+/* Glide slides inside popups */
+.media-carousel { margin-bottom: 15px; }
+.media-carousel .glide { width: 100%; }
+.media-carousel .glide__slide img, .media-carousel .glide__slide video {
+    width: 100%;
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    display: block;
+}
+.media-carousel .glide__slide video { background: black; }
+
 .popup_block .close {
     position: absolute; 
     top: 15px; 

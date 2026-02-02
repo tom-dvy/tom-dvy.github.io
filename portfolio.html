@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Tom DAVY</title>
     <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Glide.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.5.2/dist/css/glide.core.min.css">
+    <!-- Glide.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.5.2/dist/glide.min.js"></script>
     <style>
         /* Force le fond de la page entière à être noir pendant la transition */
         html {
             background-color: rgb(20, 20, 94);
         }
+
         /* Cache le body pour le faire apparaître en fondu */
         body {
             opacity: 0;
         }
     </style>
 </head>
+
 <body>
 
     <!-- Menu de navigation -->
@@ -27,7 +35,7 @@
         </a>
         <!-- Bouton Mode Sombre -->
         <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
-        
+
         <!-- Bouton "hamburger" -->
         <button class="navbar-toggler" type="button">
             <i class="fas fa-bars"></i>
@@ -38,7 +46,7 @@
             <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
             <li><a href="portfolio.html" class="active"><i class="fas fa-book-open"></i> Portfolio</a></li>
             <li><a href="moodboard.html"><i class="fas fa-palette"></i> Moodboard</a></li>
-            <li><a href="contact.html"><i class="fas fa-message"></i> Contact</a></li>        
+            <li><a href="contact.html"><i class="fas fa-message"></i> Contact</a></li>
         </ul>
     </nav>
     <!-- Main-->
@@ -59,7 +67,7 @@
             <div id="carousel-container" class="carousel-container"></div>
         </section>
     </main>
-    
+
     <!-- Footer -->
     <footer>
         <p>© 2026 - Portefolio Tom DAVY</p>
@@ -67,90 +75,112 @@
 
     <!-- Pop-ups et leurs contenus-->
     <div id="overlay1" class="overlay">
-                <div class="popup_block">
-                    <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
-                    <img src="img/DAVY_Tom_LegoFCB.png" alt="Lego FC Barcelone">
-                    <h2>Lego FC Barcelone</h2>
-                    <p>Lors d'un workshop à l'IIM, nous avons eu pour mission de modéliser un personnage LEGO en une semaine sur le logiciel <a href="https://www.blender.org/" target="_blank" class="overlayLink">Blender</a>.</p>
-                    <p>En tant que supporter, j'ai choisi de créer une version LEGO aux couleurs du FC Barcelone. Ce projet m'a permis de développer mes compétences en modélisation 3D, texturing et rendu.</p>
-                    <div class="popup-details">
-                        <p><strong>Mon rôle :</strong> Modélisateur 3D, Texturing</p>
-                        <p><strong>Outils utilisés :</strong> <a href="https://www.blender.org/" target="_blank" class="overlayLink">Blender</a></p>
-                    </div>
-                </div>
+        <div class="popup_block">
+            <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
+            <div class="media-carousel" data-project-index="0"></div>
+            <h2>Lego FC Barcelone</h2>
+            <p>Lors d'un workshop à l'IIM, nous avons eu pour mission de modéliser un personnage LEGO en une semaine sur
+                le logiciel <a href="https://www.blender.org/" target="_blank" class="overlayLink">Blender</a>.</p>
+            <p>En tant que supporter, j'ai choisi de créer une version LEGO aux couleurs du FC Barcelone. Ce projet m'a
+                permis de développer mes compétences en modélisation 3D, texturing et rendu.</p>
+            <div class="popup-details">
+                <p><strong>Mon rôle :</strong> Modélisateur 3D, Texturing</p>
+                <p><strong>Outils utilisés :</strong> <a href="https://www.blender.org/" target="_blank"
+                        class="overlayLink">Blender</a></p>
             </div>
+        </div>
+    </div>
 
-            <div id="overlay2" class="overlay">
-                <div class="popup_block">
-                    <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
-                    <img src="img/HyromeFighter.PNG" alt="Jeu de combat">
-                    <h2>Hyrome Fighter</h2>
-                    <p>Projet de fin de première année de BTS, "Hyrome Fighter" est un jeu de combat 2D développé sur Scratch.</p>
-                    <p>J'étais en charge de la programmation des mécaniques de combat, de l'intelligence artificielle de l'adversaire et de l'intégration des assets graphiques.</p>
-                    <div class="popup-details">
-                        <p><strong>Mon rôle :</strong> Développeur Gameplay</p>
-                        <p><strong>Outils utilisés :</strong> <a href="https://scratch.mit.edu/" target="_blank" class="overlayLink">Scratch</a></p>
-                    </div>
-                </div>
+    <div id="overlay2" class="overlay">
+        <div class="popup_block">
+            <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
+            <div class="media-carousel" data-project-index="1"></div>
+            <h2>Hyrome Fighter</h2>
+            <p>Projet de fin de première année de BTS, "Hyrome Fighter" est un jeu de combat 2D développé sur Scratch.
+            </p>
+            <p>J'étais en charge de la programmation des mécaniques de combat, de l'intelligence artificielle de
+                l'adversaire et de l'intégration des assets graphiques.</p>
+            <div class="popup-details">
+                <p><strong>Mon rôle :</strong> Développeur Gameplay</p>
+                <p><strong>Outils utilisés :</strong> <a href="https://scratch.mit.edu/" target="_blank"
+                        class="overlayLink">Scratch</a></p>
             </div>
+        </div>
+    </div>
 
-            <div id="overlay3" class="overlay">
-                <div class="popup_block">
-                    <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
-                    <img src="img/Affiche Beaujoire.PNG" alt="Affiche Nantes Digital Week">
-                    <h2>Affiche "Nantes Digital Week"</h2>
-                    <p>Création d'une proposition d'affiche pour l'événement "Nantes Digital Week" dans le cadre d'un cours de communication visuelle. Le travail a été réalisé sur Adobe Photoshop et Illustrator.</p>
-                    <p>L'objectif était de représenter l'innovation numérique en y intégrant un symbole fort de la ville de Nantes, ici le stade de la Beaujoire.</p>
-                    <div class="popup-details">
-                        <p><strong>Mon rôle :</strong> Graphiste</p>
-                        <p><strong>Outils utilisés :</strong> <a href="https://photoshop.adobe.com/discover?promoid=DHWC15GP&mv=other" target="_blank" class="overlayLink">Adobe Photoshop</a></p>
-                    </div>
-                </div>
+    <div id="overlay3" class="overlay">
+        <div class="popup_block">
+            <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
+            <div class="media-carousel" data-project-index="2"></div>
+            <h2>Affiche "Nantes Digital Week"</h2>
+            <p>Création d'une proposition d'affiche pour l'événement "Nantes Digital Week" dans le cadre d'un cours de
+                communication visuelle. Le travail a été réalisé sur Adobe Photoshop et Illustrator.</p>
+            <p>L'objectif était de représenter l'innovation numérique en y intégrant un symbole fort de la ville de
+                Nantes, ici le stade de la Beaujoire.</p>
+            <div class="popup-details">
+                <p><strong>Mon rôle :</strong> Graphiste</p>
+                <p><strong>Outils utilisés :</strong> <a
+                        href="https://photoshop.adobe.com/discover?promoid=DHWC15GP&mv=other" target="_blank"
+                        class="overlayLink">Adobe Photoshop</a></p>
             </div>
+        </div>
+    </div>
 
-            <div id="overlay4" class="overlay">
-                <div class="popup_block">
-                    <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
-                    <img src="img/ConsoEnergie.PNG" alt="Tableau de bord des énergies">
-                    <h2>Dashboard Énergétique</h2>
-                    <p>Développement d'une interface web pour la visualisation de données de consommation énergétique. Ce projet a été réalisé en utilisant HTML, CSS et la librairie JavaScript Chart.js.</p>
-                    <p>Les données sont chargées dynamiquement et affichées sous forme de graphiques interactifs pour faciliter leur analyse.</p>
-                    <div class="popup-details">
-                        <p><strong>Mon rôle :</strong> Développeur Front-End</p>
-                        <p><strong>Outils utilisés :</strong> <a href="https://www.eclipse.org/" target="_blank" class="overlayLink">Eclipse</a></p>
-                    </div>
-                </div>
+    <div id="overlay4" class="overlay">
+        <div class="popup_block">
+            <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
+            <div class="media-carousel" data-project-index="3"></div>
+            <h2>Dashboard Énergétique</h2>
+            <p>Développement d'une interface web pour la visualisation de données de consommation énergétique. Ce projet
+                a été réalisé en utilisant HTML, CSS et la librairie JavaScript Chart.js.</p>
+            <p>Les données sont chargées dynamiquement et affichées sous forme de graphiques interactifs pour faciliter
+                leur analyse.</p>
+            <div class="popup-details">
+                <p><strong>Mon rôle :</strong> Développeur Front-End</p>
+                <p><strong>Outils utilisés :</strong> <a href="https://www.eclipse.org/" target="_blank"
+                        class="overlayLink">Eclipse</a></p>
             </div>
+        </div>
+    </div>
 
-            <div id="overlay5" class="overlay">
-                <div class="popup_block">
-                    <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
-                    <img src="img/ihm_accueil.png" alt="IHM Grainothèque">
-                    <h2>IHM Grainothèque</h2>
-                    <p>Conception et prototypage d'une Interface Homme-Machine (IHM) pour une grainothèque connectée. Le but était de créer une interface simple et intuitive pour gérer les stocks de graines.</p>
-                    <p>Les maquettes ont été créées sur Figma, en se concentrant sur l'expérience utilisateur (UX) et le design d'interface (UI).</p>
-                    <div class="popup-details">
-                        <p><strong>Mon rôle :</strong> Développeur Front-End/Back-End</p>
-                        <p><strong>Outils utilisés :</strong> <a href="https://code.visualstudio.com/" target="_blank" class="overlayLink">VS Code | </a> <a href="https://nodejs.org/en" target="_blank" class="overlayLink">Node.js</a></p>
-                    </div>
-                </div>
+    <div id="overlay5" class="overlay">
+        <div class="popup_block">
+            <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
+            <div class="media-carousel" data-project-index="4"></div>
+            <h2>IHM Grainothèque</h2>
+            <p>Conception et prototypage d'une Interface Homme-Machine (IHM) pour une grainothèque connectée. Le but
+                était de créer une interface simple et intuitive pour gérer les stocks de graines.</p>
+            <p>Les maquettes ont été créées sur Figma, en se concentrant sur l'expérience utilisateur (UX) et le design
+                d'interface (UI).</p>
+            <div class="popup-details">
+                <p><strong>Mon rôle :</strong> Développeur Front-End/Back-End</p>
+                <p><strong>Outils utilisés :</strong> <a href="https://code.visualstudio.com/" target="_blank"
+                        class="overlayLink">VS Code | </a> <a href="https://nodejs.org/en" target="_blank"
+                        class="overlayLink">Node.js</a></p>
             </div>
+        </div>
+    </div>
 
-            <div id="overlay6" class="overlay">
-                <div class="popup_block">
-                    <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
-                    <img src="img/pokedex.png" alt="Appli Pokedex">
-                    <h2>Pokédex</h2>
-                    <p>Conception d'une application Pokédex fonctionnelle. Le but était de créer une interface simple et intuitive pour consulter les pokémons.</p>
-                    <p>Je me suis aidé de l'API PokeAPI pour récupérer les données. L'utilisateur a accès aux différentes formes, aux évolutions, aux stats, aux types, ect de chaque pokémon, via une fiche technique. J'ai surtout porté mes efforts sur la partie graphique et fonctionnelle de l'application</p>
-                    <div class="popup-details">
-                        <p><strong>Mon rôle :</strong> Développeur Front-End/Back-End</p>
-                        <p><strong>Outils utilisés :</strong> <a href="https://pokeapi.co/" target="_blank" class="overlayLink">PokeAPI</a></p>
-                    </div>
-                </div>
+    <div id="overlay6" class="overlay">
+        <div class="popup_block">
+            <a class="close" href="#!"><i class="fa-solid fa-circle-xmark"></i></a><br>
+            <div class="media-carousel" data-project-index="5"></div>
+            <h2>Pokédex</h2>
+            <p>Conception d'une application Pokédex fonctionnelle. Le but était de créer une interface simple et
+                intuitive pour consulter les pokémons.</p>
+            <p>Je me suis aidé de l'API PokeAPI pour récupérer les données. L'utilisateur a accès aux différentes
+                formes, aux évolutions, aux stats, aux types, ect de chaque pokémon, via une fiche technique. J'ai
+                surtout porté mes efforts sur la partie graphique et fonctionnelle de l'application</p>
+            <div class="popup-details">
+                <p><strong>Mon rôle :</strong> Développeur Front-End/Back-End</p>
+                <p><strong>Outils utilisés :</strong> <a href="https://pokeapi.co/" target="_blank"
+                        class="overlayLink">PokeAPI</a></p>
             </div>
+        </div>
+    </div>
 
     <!-- Lien vers le javascript-->
     <script src="js/script.js"></script>
 </body>
+
 </html>
