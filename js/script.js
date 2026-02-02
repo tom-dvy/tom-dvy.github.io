@@ -182,6 +182,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // Définit un tableau d'objets contenant les informations de chaque projet du portfolio, et un tableau "media" pour les images/vidéos du popup.
     const mesProjets = [
       {
+        category: "jeux",
+        title: "Alone In The Dark",
+        subtitle: "Game Programming",
+        description: "Création d'un jeu de survie spacial sur Unreal Engine 5",
+        image: "../img/AloneInTheDark/environement.png",
+        media: [
+          { type: 'image', src: 'img/AloneInTheDark/environement.png' },
+          { type: 'video', src: 'img/AloneInTheDark/SideQuest_DAVY_Tom.mp4' },
+          { type: 'image', src: 'img/AloneInTheDark/demogorgonVP.png' },
+          { type: 'image', src: 'img/AloneInTheDark/MainMenuScreen.png' },
+          { type: 'image', src: 'img/AloneInTheDark/Moodboard.png' },
+        ],
+        details: {
+          role: "Game Programmer, Level Designer",
+          tools: "Unreal Engine 5"
+        }
+      },
+      {
+        category: "jeux",
+        title: "Hyrome Fighter",
+        subtitle: "Jeu de Combat 2D",
+        description: "Projet de fin de BTS. Un jeu de combat 2D développé avec Scratch.",
+        image: "../img/HyromeFighter.PNG",
+        media: [
+          { type: 'image', src: 'img/HyromeFighter.PNG' }
+        ],
+        details: {
+          role: "Développeur Gameplay",
+          tools: "Scratch"
+        }
+      },
+      {
         category: "3d",
         title: "Lego FC Barcelone",
         subtitle: "Modélisation 3D",
@@ -193,22 +225,6 @@ document.addEventListener('DOMContentLoaded', function() {
         details: {
           role: "Modélisateur 3D, Texturing",
           tools: "Blender"
-        }
-      },
-      {
-        category: "jeux",
-        title: "Hyrome Fighter",
-        subtitle: "Jeu de Combat 2D",
-        description: "Projet de fin de BTS. Un jeu de combat 2D développé avec Scratch.",
-        image: "../img/HyromeFighter.PNG",
-        media: [
-          { type: 'image', src: 'img/HyromeFighter.PNG' },
-          // exemple de vidéo (ajoute le fichier videos/hyrome_demo.mp4 si tu veux une vidéo locale)
-          { type: 'video', src: 'videos/hyrome_demo.mp4' }
-        ],
-        details: {
-          role: "Développeur Gameplay",
-          tools: "Scratch"
         }
       },
       {
