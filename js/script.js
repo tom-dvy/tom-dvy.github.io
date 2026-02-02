@@ -189,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
         image: "../img/AloneInTheDark/environement.png",
         media: [
           { type: 'image', src: 'img/AloneInTheDark/environement.png' },
-          //{ type: 'video', src: 'img/AloneInTheDark/SideQuest_DAVY_Tom.mp4' },
           { type: 'image', src: 'img/AloneInTheDark/demogorgonVP.png' },
           { type: 'image', src: 'img/AloneInTheDark/MainMenuScreen.png' },
           { type: 'image', src: 'img/AloneInTheDark/Moodboard.png' },
