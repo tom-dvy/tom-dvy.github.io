@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
         title: "Alone In The Dark",
         subtitle: "Game Programming",
         description: "Création d'un jeu de survie spacial sur Unreal Engine 5",
-        image: "../img/AloneInTheDark/environement.png",
+        image: "img/AloneInTheDark/environement.png",
         media: [
           { type: 'image', src: 'img/AloneInTheDark/environement.png' },
           { type: 'image', src: 'img/AloneInTheDark/demogorgonVP.png' },
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         title: "Hyrome Fighter",
         subtitle: "Jeu de Combat 2D",
         description: "Projet de fin de BTS. Un jeu de combat 2D développé avec Scratch.",
-        image: "../img/HyromeFighter.PNG",
+        image: "img/HyromeFighter.PNG",
         media: [
           { type: 'image', src: 'img/HyromeFighter.PNG' }
         ],
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
         title: "Lego FC Barcelone",
         subtitle: "Modélisation 3D",
         description: "Création d'un personnage LEGO sur Blender lors d'un workshop à l'IIM.",
-        image: "../img/DAVY_Tom_LegoFCB.png",
+        image: "img/DAVY_Tom_LegoFCB.png",
         media: [
           { type: 'image', src: 'img/DAVY_Tom_LegoFCB.png' }
         ],
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
         title: "Affiche NDW",
         subtitle: "Communication Visuelle",
         description: "Proposition d'affiche pour l'événement Nantes Digital Week.",
-        image: "../img/Affiche Beaujoire.PNG",
+        image: "img/Affiche Beaujoire.PNG",
         media: [
           { type: 'image', src: 'img/Affiche Beaujoire.PNG' }
         ],
@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
         title: "Dashboard Énergie",
         subtitle: "Data visualisation",
         description: "Interface pour la visualisation de données de consommation énergétique.",
-        image: "../img/ConsoEnergie.PNG",
+        image: "img/ConsoEnergie.PNG",
         media: [
           { type: 'image', src: 'img/ConsoEnergie.PNG' }
         ],
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
         title: "Grainothèque Connectée",
         subtitle: "Site Web",
         description: "Conception et prototypage d'un site pour une grainothèque connectée.",
-        image: "../img/ihm_accueil.png",
+        image: "img/ihm_accueil.png",
         media: [
           { type: 'image', src: 'img/ihm_accueil.png' }
         ],
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
         title: "Pokédex",
         subtitle: "Application",
         description: "Conception d'une application Pokédex fonctionnelle et accessible.",
-        image: "../img/pokedex.png",
+        image: "img/pokedex.png",
         media: [
           { type: 'image', src: 'img/pokedex.png' }
         ],
