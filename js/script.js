@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
         media: [
           { type: 'image', src: 'img/AloneInTheDark/environement.png' },
           { type: 'image', src: 'img/AloneInTheDark/demogorgonVP.png' },
-          { type: 'youtube', id: 'C-_C0MowHJc' },
+          { type: 'youtube', id: 'bzPP-RopBtA' },
           { type: 'image', src: 'img/AloneInTheDark/MainMenuScreen.png' },
           { type: 'image', src: 'img/AloneInTheDark/Moodboard.png' },
         ],
