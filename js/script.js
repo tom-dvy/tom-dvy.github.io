@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
         media: [
           { type: 'image', src: 'img/AloneInTheDark/environement.png' },
           { type: 'image', src: 'img/AloneInTheDark/demogorgonVP.png' },
-          { type: 'video', src: 'img/AloneInTheDark/SideQuest_DAVY_Tom.mp4' },
+          { type: 'youtube', id: 'C-_C0MowHJc' },
           { type: 'image', src: 'img/AloneInTheDark/MainMenuScreen.png' },
           { type: 'image', src: 'img/AloneInTheDark/Moodboard.png' },
         ],
@@ -438,6 +438,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 html += `<li class="glide__slide"><img src="${item.src}" alt=""></li>`;
             } else if (item.type === 'video') {
                 html += `<li class="glide__slide"><video controls src="${item.src}"></video></li>`;
+            } else if (item.type === 'youtube') {
+                // YouTube embeds must include enablejsapi=1 to permettre l'arrêt via postMessage
+                const embedSrc = `https://www.youtube.com/embed/${item.id}?rel=0&modestbranding=1&enablejsapi=1`;
+                const iframe = `<div class="youtube-wrapper"><iframe src="${embedSrc}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" loading="lazy" allowfullscreen></iframe></div>`;
+                html += `<li class="glide__slide">${iframe}</li>`;
             } else if (item.type === 'iframe') {
                 html += `<li class="glide__slide">${item.src}</li>`;
             }
@@ -463,12 +468,20 @@ document.addEventListener('DOMContentLoaded', function() {
         if (glideEl && window.Glide) {
             const glide = new Glide(`#${glideEl.id}`, { type: 'carousel', startAt: 0, perView: 1, gap: 10 });
             // Lors du changement de slide, on met en pause les vidéos non visibles
+            // et on stoppe les iframes YouTube via postMessage (require enablejsapi=1 dans l'URL)
             glide.on('run', () => {
                 const slides = container.querySelectorAll('.glide__slide');
                 slides.forEach((slide, i) => {
                     const v = slide.querySelector('video');
                     if (v) {
                         if (i !== glide.index) { v.pause(); }
+                    }
+                    const iframe = slide.querySelector('iframe');
+                    if (iframe && i !== glide.index) {
+                        try {
+                            // Demande à l'API du player YouTube d'arrêter la vidéo
+                            iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+                        } catch (e) { /* silent */ }
                     }
                 });
             });
