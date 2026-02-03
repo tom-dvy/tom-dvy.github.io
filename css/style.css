@@ -274,7 +274,8 @@ body.is-leaving {
     border: 5px solid #ddd;
     position: relative; 
     width: 90%;
-    max-width: 700px;
+    /* Permet un popup plus large pour les vidéos tout en restant responsive */
+    max-width: min(900px, 95vw);
     box-shadow: 0 0 20px #000; 
     border-radius: 10px;
     max-height: 90vh; 
@@ -302,6 +303,26 @@ body.is-leaving {
     display: block;
 }
 .media-carousel .glide__slide video { background: black; }
+
+/* YouTube embed styling: centre et agrandit légèrement, garde la réactivité */
+.media-carousel .glide__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.media-carousel .glide__slide .youtube-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.media-carousel .glide__slide .youtube-wrapper iframe {
+    width: min(900px, 100%);
+    aspect-ratio: 16 / 9;
+    max-height: 75vh;
+    border: none;
+    display: block;
+}
 
 .popup_block .close {
     position: absolute; 
