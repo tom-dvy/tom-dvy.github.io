@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // --- GESTION DES TRANSITIONS DE PAGE ---
     // Sélectionne l'élément <body> de la page pour lui appliquer des animations.
     const body = document.body;
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Parcourt chaque lien trouvé pour lui ajouter un gestionnaire d'événement au clic.
     allLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             // Récupère la destination (l'attribut href) du lien cliqué.
             const href = this.getAttribute('href');
             // Vérifie si le lien est local vers une autre page du site.
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (isLocalLink && !isTargetBlank && !isHashLink && !isDownloadLink) {
                 e.preventDefault();
-                
+
                 // On ajoute la classe qui déclenche l'animation de sortie (fade out et déplacement vers le haut).
                 body.classList.add('is-leaving');
 
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
+
         // Ajoute un écouteur d'événement global pour les touches du clavier.
         window.addEventListener('keydown', e => {
             // Si la touche pressée est "Echap" ET qu'un pop-up est actuellement ouvert (son hash commence par #overlay)...
@@ -181,108 +181,139 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- DONNÉES DES PROJETS ---
     // Définit un tableau d'objets contenant les informations de chaque projet du portfolio, et un tableau "media" pour les images/vidéos du popup.
     const mesProjets = [
-      {
-        category: "jeux",
-        title: "Alone In The Dark",
-        subtitle: "Game Programming",
-        description: "Création d'un jeu de survie spacial sur Unreal Engine 5",
-        image: "img/AloneInTheDark/environement.png",
-        media: [
-          { type: 'image', src: 'img/AloneInTheDark/environement.png' },
-          { type: 'image', src: 'img/AloneInTheDark/demogorgonVP.png' },
-          { type: 'youtube', id: 'bzPP-RopBtA' },
-          { type: 'image', src: 'img/AloneInTheDark/MainMenuScreen.png' },
-          { type: 'image', src: 'img/AloneInTheDark/Moodboard.png' },
-        ],
-        details: {
-          role: "Game Programmer, Level Designer",
-          tools: "Unreal Engine 5"
+        {
+            category: "jeux",
+            title: "Alone In The Dark",
+            subtitle: "Game Programming",
+            description: "Création d'un jeu de survie spacial sur Unreal Engine 5",
+            image: "img/AloneInTheDark/environement.png",
+            media: [
+                { type: 'image', src: 'img/AloneInTheDark/environement.png' },
+                { type: 'image', src: 'img/AloneInTheDark/demogorgonVP.png' },
+                { type: 'youtube', id: 'bzPP-RopBtA' },
+                { type: 'image', src: 'img/AloneInTheDark/MainMenuScreen.png' },
+                { type: 'image', src: 'img/AloneInTheDark/Moodboard.png' },
+            ],
+            details: {
+                role: "Game Programmer, Level Designer",
+                tools: "Unreal Engine 5"
+            }
+        },
+        {
+            category: "jeux",
+            title: "Hyrome Fighter",
+            subtitle: "Jeu de Combat 2D",
+            description: "Projet de fin de BTS. Un jeu de combat 2D développé avec Scratch.",
+            image: "img/HyromeFighter.PNG",
+            media: [
+                { type: 'image', src: 'img/HyromeFighter.PNG' }
+            ],
+            details: {
+                role: "Développeur Gameplay",
+                tools: "Scratch"
+            }
+        },
+        {
+            category: "3d",
+            title: "Lego FC Barcelone",
+            subtitle: "Modélisation 3D",
+            description: "Création d'un personnage LEGO sur Blender lors d'un workshop à l'IIM.",
+            image: "img/DAVY_Tom_LegoFCB.png",
+            media: [
+                { type: 'image', src: 'img/DAVY_Tom_LegoFCB.png' }
+            ],
+            details: {
+                role: "Modélisateur 3D, Texturing",
+                tools: "Blender"
+            }
+        },
+        {
+            category: "3d",
+            title: "Affiche NDW",
+            subtitle: "Communication Visuelle",
+            description: "Proposition d'affiche pour l'événement Nantes Digital Week.",
+            image: "img/Affiche Beaujoire.PNG",
+            media: [
+                { type: 'image', src: 'img/Affiche Beaujoire.PNG' }
+            ],
+            details: {
+                role: "Graphiste",
+                tools: "Adobe Photoshop, Illustrator"
+            }
+        },
+        {
+            category: "app",
+            title: "Dashboard Énergie",
+            subtitle: "Data visualisation",
+            description: "Interface pour la visualisation de données de consommation énergétique.",
+            image: "img/ConsoEnergie.PNG",
+            media: [
+                { type: 'image', src: 'img/ConsoEnergie.PNG' }
+            ],
+            details: {
+                role: "Développeur Front-End",
+                tools: "C, Eclipse"
+            }
+        },
+        {
+            category: "app",
+            title: "Grainothèque Connectée",
+            subtitle: "Site Web",
+            description: "Conception et prototypage d'un site pour une grainothèque connectée.",
+            image: "img/ihm_accueil.png",
+            media: [
+                { type: 'image', src: 'img/ihm_accueil.png' }
+            ],
+            details: {
+                role: "Développeur Front-End et Back-End",
+                tools: "HTML, CSS, Javascript, Nodejs"
+            }
+        },
+        {
+            category: "app",
+            title: "Pokédex",
+            subtitle: "Application",
+            description: "Conception d'une application Pokédex fonctionnelle et accessible.",
+            image: "img/pokedex.png",
+            media: [
+                { type: 'image', src: 'img/pokedex.png' },
+                { type: 'youtube', id: 'K-iOldXLxo8' }
+
+            ],
+            details: {
+                role: "Développeur Front-End et Back-End",
+                tools: "HTML, CSS, Javascript, PokeAPI"
+            }
+        },
+        {
+            category: "3d",
+            title: "Vegeta 3D",
+            subtitle: "Modélisation 3D",
+            description: "Création d'un personnage 3D de Vegeta sur Blender.",
+            image: "img/3D/Vegeta_Screen.png",
+            media: [
+                { type: 'image', src: 'img/3D/Vegeta_Screen.png' },
+                { type: 'youtube', id: 'C-_C0MowHJc' }
+            ],
+            details: {
+                role: "Modélisateur 3D",
+                tools: "Blender"
+            }
+        },
+        {
+            category: "3d",
+            title: "Texturing d'appartement",
+            subtitle: "Modélisation 3D",
+            description: "Décoration d'un appartement 3D",
+            image: "img/3D/Appartement_DAVY_Tom.png",
+            media: [
+                { type: 'image', src: 'img/3D/Appartement_DAVY_Tom.png' },
+            ],
+            details: {
+                role: "Modélisateur 3D",
+                tools: "Blender"
+            }
         }
-      },
-      {
-        category: "jeux",
-        title: "Hyrome Fighter",
-        subtitle: "Jeu de Combat 2D",
-        description: "Projet de fin de BTS. Un jeu de combat 2D développé avec Scratch.",
-        image: "img/HyromeFighter.PNG",
-        media: [
-          { type: 'image', src: 'img/HyromeFighter.PNG' }
-        ],
-        details: {
-          role: "Développeur Gameplay",
-          tools: "Scratch"
-        }
-      },
-      {
-        category: "3d",
-        title: "Lego FC Barcelone",
-        subtitle: "Modélisation 3D",
-        description: "Création d'un personnage LEGO sur Blender lors d'un workshop à l'IIM.",
-        image: "img/DAVY_Tom_LegoFCB.png",
-        media: [
-          { type: 'image', src: 'img/DAVY_Tom_LegoFCB.png' }
-        ],
-        details: {
-          role: "Modélisateur 3D, Texturing",
-          tools: "Blender"
-        }
-      },
-      {
-        category: "3d",
-        title: "Affiche NDW",
-        subtitle: "Communication Visuelle",
-        description: "Proposition d'affiche pour l'événement Nantes Digital Week.",
-        image: "img/Affiche Beaujoire.PNG",
-        media: [
-          { type: 'image', src: 'img/Affiche Beaujoire.PNG' }
-        ],
-        details: {
-          role: "Graphiste",
-          tools: "Adobe Photoshop, Illustrator"
-        }
-      },
-      {
-        category: "app",
-        title: "Dashboard Énergie",
-        subtitle: "Data visualisation",
-        description: "Interface pour la visualisation de données de consommation énergétique.",
-        image: "img/ConsoEnergie.PNG",
-        media: [
-          { type: 'image', src: 'img/ConsoEnergie.PNG' }
-        ],
-        details: {
-          role: "Développeur Front-End",
-          tools: "C, Eclipse"
-        }
-      },
-      {
-        category: "app",
-        title: "Grainothèque Connectée",
-        subtitle: "Site Web",
-        description: "Conception et prototypage d'un site pour une grainothèque connectée.",
-        image: "img/ihm_accueil.png",
-        media: [
-          { type: 'image', src: 'img/ihm_accueil.png' }
-        ],
-        details: {
-          role: "Développeur Front-End et Back-End",
-          tools: "HTML, CSS, Javascript, Nodejs"
-        }
-      },
-      {
-        category: "app",
-        title: "Pokédex",
-        subtitle: "Application",
-        description: "Conception d'une application Pokédex fonctionnelle et accessible.",
-        image: "img/pokedex.png",
-        media: [
-          { type: 'image', src: 'img/pokedex.png' }
-        ],
-        details: {
-          role: "Développeur Front-End et Back-End",
-          tools: "HTML, CSS, Javascript, PokeAPI"
-        }
-      }
     ];
 
     // --- GESTION DU PORTFOLIO (CARROUSEL 3D + FILTRES) ---
@@ -291,13 +322,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Sélectionne le conteneur du carrousel.
         const container = document.getElementById('carousel-container');
         // Si le conteneur n'est pas trouvé (on n'est pas sur la page du portfolio), on arrête la fonction.
-        if (!container) return; 
+        if (!container) return;
 
         // Crée une copie du tableau des projets pour pouvoir la filtrer sans modifier l'original.
         let currentProjects = [...mesProjets];
         // Initialise l'index de la diapositive (slide) actuellement affichée au centre.
         let slideIndex = 0;
-        
+
         // Fonction pour créer et afficher les diapositives du carrousel.
         function renderCarousel() {
             // Vide le contenu actuel du carrousel pour le reconstruire.
@@ -326,7 +357,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Crée un élément <a> qui servira de diapositive cliquable.
                 const slideLink = document.createElement('a');
                 slideLink.className = 'slide';
-                
+
                 const originalIndex = mesProjets.findIndex(p => p.title === projet.title);
                 slideLink.href = `#overlay${originalIndex + 1}`;
 
@@ -335,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 slideLink.style.setProperty('--dir', dir);
                 // Définit l'image de fond de la diapositive.
                 slideLink.style.backgroundImage = `url('${projet.image}')`;
-                
+
                 // Ajoute des attributs 'data' pour le style et la sélection en JS/CSS.
                 if (isHidden) slideLink.setAttribute('data-hidden', true);
                 if (offset === 0) slideLink.setAttribute('data-active', true);
@@ -347,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <h3 class="slide-subtitle">${projet.subtitle}</h3>
                         <p class="slide-description">${projet.description}</p>
                     </div>`;
-                
+
                 slidesWrapper.appendChild(slideLink);
             });
 
@@ -363,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Redessine le carrousel avec le nouvel index.
                     renderCarousel();
                 };
-                
+
                 const nextButton = document.createElement('button');
                 nextButton.className = 'carousel-nav next';
                 nextButton.innerHTML = '›';
@@ -372,12 +403,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Redessine le carrousel.
                     renderCarousel();
                 };
-                
+
                 // Ajoute les boutons au conteneur du carrousel.
                 container.appendChild(prevButton);
                 container.appendChild(nextButton);
             }
-            
+
             // Active l'effet d'inclinaison 3D sur la diapositive active.
             initTiltEffect();
         }
@@ -387,7 +418,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Sélectionne uniquement la diapositive active.
             const activeSlide = document.querySelector('.slide[data-active]');
             if (!activeSlide) return; // Si aucune n'est active, ne fait rien.
-            
+
             // Ajoute un écouteur pour le mouvement de la souris sur la diapositive active.
             activeSlide.addEventListener('mousemove', (e) => {
                 const rect = activeSlide.getBoundingClientRect();
@@ -492,7 +523,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function destroyAllCarousels() {
         for (const [id, inst] of carouselInstances) {
-            try { inst.glide.destroy(); } catch (e) {}
+            try { inst.glide.destroy(); } catch (e) { }
             const vids = inst.container.querySelectorAll('video');
             vids.forEach(v => { v.pause(); v.currentTime = 0; });
             inst.container.innerHTML = '';
