@@ -313,6 +313,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 role: "Modélisateur 3D",
                 tools: "Blender"
             }
+        },
+        {
+            category: "en_cours",
+            title: "Prototype de jeu type Assassin's Creed",
+            subtitle: "Protoypage de jeu",
+            description: "Prototype d'un jeu de type Assassin's Creed.",
+            image: "img/AC/AC_Screen.png",
+            media: [
+                { type: 'youtube', id: '3WfGcFnUn7Y' }
+            ],
+            details: {
+                role: "Développeur Gameplay, Level Designer",
+                tools: "Unreal Engine 5.6"
+            }
         }
     ];
 
