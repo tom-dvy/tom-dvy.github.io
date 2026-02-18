@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             category: "en_cours",
             title: "Prototype de jeu type Assassin's Creed",
-            subtitle: "Protoypage de jeu",
+            subtitle: "Prototypage de jeu",
             description: "Prototype d'un jeu de type Assassin's Creed.",
             image: "img/AC/AC_Screen.png",
             media: [
