@@ -327,6 +327,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 role: "Développeur Gameplay, Level Designer",
                 tools: "Unreal Engine 5.6"
             }
+        },
+        {
+            category: "app",
+            title: "Lecteur de musique",
+            subtitle: "Application",
+            description: "Prototype d'un lecteur de musique.",
+            image: "img/Audino/AudinoScreen.png",
+            media: [
+                { type: 'youtube', id: 'SAhzcfc2Dc8' }
+            ],
+            details: {
+                role: "Développeur Full Stack",
+                tools: "VS Code, Nodejs"
+            }
         }
     ];
 
