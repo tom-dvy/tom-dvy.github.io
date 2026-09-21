@@ -11,12 +11,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- TRADUCTION AUTOMATIQUE ---
     const languageToggle = document.getElementById('language-toggle');
     if (languageToggle) {
+        const isEnglish = document.cookie.includes('googtrans=/fr/en');
+        languageToggle.textContent = isEnglish ? 'FR' : 'EN';
+        languageToggle.setAttribute('aria-label', isEnglish ? 'Passer en français' : 'Switch to English');
+
         languageToggle.addEventListener('click', () => {
-            const languageSelect = document.querySelector('.goog-te-combo');
-            if (!languageSelect) return;
-            languageSelect.value = languageSelect.value === 'en' ? '' : 'en';
-            languageSelect.dispatchEvent(new Event('change'));
-            languageToggle.textContent = languageSelect.value === 'en' ? 'FR' : 'EN';
+            const switchToEnglish = languageToggle.textContent === 'EN';
+            if (switchToEnglish) {
+                document.cookie = 'googtrans=/fr/en; path=/';
+            } else {
+                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+            }
+            window.location.reload();
         });
     }
 
