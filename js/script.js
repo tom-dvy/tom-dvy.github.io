@@ -1,4 +1,24 @@
+window.googleTranslateElementInit = function () {
+    new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        includedLanguages: 'en',
+        autoDisplay: false
+    }, 'google_translate_element');
+};
+
 document.addEventListener('DOMContentLoaded', function () {
+
+    // --- TRADUCTION AUTOMATIQUE ---
+    const languageToggle = document.getElementById('language-toggle');
+    if (languageToggle) {
+        languageToggle.addEventListener('click', () => {
+            const languageSelect = document.querySelector('.goog-te-combo');
+            if (!languageSelect) return;
+            languageSelect.value = languageSelect.value === 'en' ? '' : 'en';
+            languageSelect.dispatchEvent(new Event('change'));
+            languageToggle.textContent = languageSelect.value === 'en' ? 'FR' : 'EN';
+        });
+    }
 
     // --- GESTION DES TRANSITIONS DE PAGE ---
     // Sélectionne l'élément <body> de la page pour lui appliquer des animations.

@@ -699,3 +699,32 @@ h1#Nom {
     .carousel-nav.prev { left: 2%; }
     .carousel-nav.next { right: 2%; }
 }
+
+.language-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.language-btn:hover {
+    background-color: white;
+    color: rgb(20, 20, 94);
+}
+
+#google_translate_element {
+    display: none;
+}
+
+.goog-te-banner-frame,
+.skiptranslate {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
