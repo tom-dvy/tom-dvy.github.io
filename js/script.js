@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "jeux",
             title: "Alone In The Dark",
             subtitle: "Game Programming",
-            description: "Création d'un jeu de survie spacial sur Unreal Engine 5",
+            description: "Création d'un jeu de survie spatial sur Unreal Engine 5",
             image: "img/AloneInTheDark/environement.png",
             media: [
                 { type: 'image', src: 'img/AloneInTheDark/environement.png' },
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ],
             details: {
                 role: "Développeur Front-End",
-                tools: "C, Eclipse"
+                tools: "HTML, CSS, Chart.js"
             }
         },
         {
