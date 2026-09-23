@@ -532,7 +532,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 html += `<li class="glide__slide">${item.src}</li>`;
             }
         });
-        html += `</ul></div><div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<">‹</button><button class="glide__arrow glide__arrow--right" data-glide-dir=">">›</button></div><div class="glide__bullets" data-glide-el="controls[nav]"></div></div>`;
+        html += `</ul></div><div class="glide__arrows" data-glide-el="controls"><button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Image précédente"><i class="fas fa-chevron-left" aria-hidden="true"></i></button><button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Image suivante"><i class="fas fa-chevron-right" aria-hidden="true"></i></button></div><div class="glide__bullets" data-glide-el="controls[nav]"></div></div>`;
         return html;
     }
 
