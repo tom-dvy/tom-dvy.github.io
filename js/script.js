@@ -26,15 +26,36 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // --- EFFET D'APPARITION AU SCROLL ---
+    const revealElements = document.querySelectorAll('section[id], .competence-card, .parcours-item, .projet-item, .moodboard-item');
+
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        revealElements.forEach(element => {
+            element.classList.add('reveal');
+            revealObserver.observe(element);
+        });
+    } else {
+        revealElements.forEach(element => element.classList.add('visible'));
+    }
+
     // --- GESTION DES TRANSITIONS DE PAGE ---
     // Sélectionne l'élément <body> de la page pour lui appliquer des animations.
     const body = document.body;
 
     // ANIMATION D'ENTRÉE : faire apparaître la page
     window.addEventListener('load', () => {
-        // On initialise la position de départ de l'animation d'entrée : le corps de la page est légèrement décalé vers le haut.
-        body.style.transform = 'translateY(-15px)';
-
         setTimeout(() => {
             body.classList.add('is-visible');
         }, 50);
@@ -414,6 +435,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const originalIndex = mesProjets.findIndex(p => p.title === projet.title);
                 slideLink.href = `#overlay${originalIndex + 1}`;
+                slideLink.addEventListener('click', event => {
+                    event.preventDefault();
+                    const scrollTop = window.scrollY;
+                    const scrollLeft = window.scrollX;
+                    window.location.hash = slideLink.hash;
+                    window.requestAnimationFrame(() => {
+                        window.scrollTo(scrollLeft, scrollTop);
+                    });
+                });
 
                 // Applique les styles via des propriétés CSS personnalisées (--offset, --dir) qui contrôlent la position et l'animation en CSS.
                 slideLink.style.setProperty('--offset', offset);

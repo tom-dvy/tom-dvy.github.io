@@ -30,13 +30,13 @@
         </a>
         
         <!-- Bouton pour changer entre le mode clair et le mode sombre. -->
-        <button id="theme-toggle" class="theme-btn" title="Changer de thème"><i class="fas fa-moon"></i></button>
-        <button id="language-toggle" class="language-btn" type="button" aria-label="Switch to English">EN</button>
-        
-        <!-- Bouton "hamburger" -->
-        <button class="navbar-toggler" type="button">
-            <i class="fas fa-bars"></i>
-        </button>
+        <div class="nav-controls">
+            <button id="theme-toggle" class="theme-btn" title="Changer de thème"><i class="fas fa-moon"></i></button>
+            <button id="language-toggle" class="language-btn" type="button" aria-label="Switch to English">EN</button>
+            <button class="navbar-toggler" type="button" aria-label="Ouvrir le menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
         
         <!-- Menus -->
         <ul class="menu">
@@ -99,10 +99,10 @@
         <section id="presentation">
             <h1>Présentation</h1>
             <p>
-                Âgé de 21 ans, je suis actuellement étudiant en 2ème année à l'IIM, avec pour objectif professionnel de devenir Game Programmer.<br>
-                Dans mon cursus j'étudie le Game Programming, en maitrisant des logiciels comme Unity et Unreal Engine, et les langages associés.<br>
-                Avant d'intégrer l'IIM, j'ai pu réaliser un BTS SNIR qui m'a permis d'approfondir mes connaissances en réseaux et en coding.<br>
-                Enfin je suis un grand passionné de football, de jeux vidéo ainsi que de musique.
+                Âgé de 22 ans, je suis actuellement étudiant en 3ème année de Bachelor à l'IIM, avec pour objectif professionnel de devenir Game Programmer.<br>
+                Dans mon cursus j'étudie le Game Programming, en maitrisant des logiciels comme Unity et Unreal Engine, ainsi que les langages associés.<br>
+                Avant d'intégrer l'IIM, j'ai pu réaliser un BTS SNIR qui m'a permis d'approfondir mes connaissances en réseaux et en code<br>
+                Enfin je suis un grand passionné de football, de jeux vidéo ainsi que de musique, et j'aime découvrir constamment de nouvelles choses.
             </p>
         </section>
 
@@ -112,31 +112,109 @@
             <div class="competences-grid">
                 <div class="competence-card">
                     <h3><i class="fas fa-code"></i> Langages de programmation</h3>
-                    <ul>
-                        <li>HTML5 | CSS | JavaScript</li>
-                        <li>Java | C | C++ | C#</li>
-                        <li>Blueprint UE</li>
-                        <li>Bases de PHP et SQL</li>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span>Blueprint | C++ Unreal Engine</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 4 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>C++</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 4 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>C#</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 4 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>HTML5 | CSS | JavaScript</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 4 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>SQL | Base de données</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 3 sur 5" title="Niveau 3 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="competence-card">
                     <h3><i class="fas fa-cube"></i> Outils & Logiciels</h3>
-                    <ul>
-                        <li>Unity | Unreal Engine | Godot</li>
-                        <li>Photoshop | After Effects | Blender</li>
-                        <li>Eclipse | VS Code</li>
-                        <li>Notion | GitHub</li>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span>Unreal Engine</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 5 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Unity</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 4 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Rider | VS Code</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 5 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Versioning | Git</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 4 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Godot</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 3 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble "></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Notion | Excel</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 3 sur 5" title="Niveau 3 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="competence-card">
                     <h3><i class="fas fa-language"></i> Langues</h3>
-                    <ul>
-                        <li>Français (Langue maternelle)</li>
-                        <li>Anglais (C1) | TOEFL acquis</li>
-                        <li>Espagnol (A2)</li>
-                        <li>Italien (Bases)</li>
+                    <ul class="skill-list">
+                        <li class="skill-item">
+                            <span>Français (Langue maternelle)</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 5 sur 5" title="Niveau 5 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Anglais | TOEFL acquis</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 4 sur 5" title="Niveau 4 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Italien</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 1 sur 5" title="Niveau 1 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
+                        <li class="skill-item">
+                            <span>Espagnol</span>
+                            <span class="skill-level" role="img" aria-label="Niveau 2 sur 5" title="Niveau 2 sur 5">
+                                <span class="skill-bubble filled"></span><span class="skill-bubble filled"></span><span class="skill-bubble"></span><span class="skill-bubble"></span><span class="skill-bubble"></span>
+                            </span>
+                        </li>
                     </ul>
                 </div>
 
@@ -173,8 +251,9 @@
                 </div>
                 <div class="parcours-item">
                     <h3>Expériences Personnelles</h3>
-                    <p><strong>Déc. 2025 :</strong> Game Jam sur le thème "No Main Character" </p>
-                    <p><strong>Sept. 2025 :</strong> Game Jam de début d'année à l'IIM Digital School | Groupe de 7 personnes</p>
+                    <p><strong>Sept. 2026 :</strong> Game Jam sur le thème de l'Union | Jeu : Cursed Wedding</p>
+                    <p><strong>Déc. 2025 :</strong> Game Jam sur le thème "No Main Character" | Jeu : Dungeon Squire</p>
+                    <p><strong>Sept. 2025 :</strong> Game Jam de début d'année à l'IIM Digital School | Groupe de 7 personnes | Jeu : Shovel Oven</p>
                 </div>
             </div>
         </section>
