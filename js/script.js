@@ -488,7 +488,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 { type: 'image', src: 'img/DiskGame/SettingsUI.png' },
                 { type: 'image', src: 'img/DiskGame/ConventionNommageScreen.png' },
                 { type: 'image', src: 'img/DiskGame/Discord_Screen.png' },
-                { type: 'youtube', id: 'ilSlq3P8akM' }
+                { type: 'youtube', id: 'ilSlq3P8akM' },
+                { type: 'youtube', id: '4dQqXug8K3s' },
+                { type: 'youtube', id: 'NbwtrFyakvg' }
             ],
             details: {
                 role: "Développeur Gameplay, Développeur UI",
