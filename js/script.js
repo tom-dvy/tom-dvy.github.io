@@ -405,10 +405,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 role: "Game Designer, Développeur Gameplay",
                 tools: "Unity"
             }
+        },
+        {
+            category: "jeux",
+            title: "Guimi Peanuts",
+            subtitle: "Intégration UI sur Unity",
+            description: "Reproduction d'une interface et de ses transitions à partir d'assets fournis.",
+            image: "img/GuimiPeanuts/gpscreen.png",
+            media: [
+                { type: 'image', src: 'img/GuimiPeanuts/gpscreen.png' },
+                { type: 'image', src: 'img/GuimiPeanuts/gpscreen2.png' },
+                { type: 'youtube', id: 'vuT9Fk8ijX4' }
+            ],
+            details: {
+                role: "Développeur UI",
+                tools: "Unity"
+            }
         }
     ];
 
-    // --- GESTION DU PORTFOLIO (CARROUSEL 3D + FILTRES) ---
+    // --- GESTION DU PORTFOLIO (GRILLE + FILTRES) ---
     // Définit la fonction principale pour initialiser le portfolio.
     function initPortfolio() {
         // Sélectionne le conteneur du carrousel.
@@ -417,13 +433,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!container) return;
 
         // Crée une copie du tableau des projets pour pouvoir la filtrer sans modifier l'original.
-        let currentProjects = [...mesProjets];
-        // Initialise l'index de la diapositive (slide) actuellement affichée au centre.
-        let slideIndex = 0;
-
-        // Fonction pour créer et afficher les diapositives du carrousel.
-        function renderCarousel() {
-            // Vide le contenu actuel du carrousel pour le reconstruire.
+        const projectsWithGamesFirstAndGraphicsLast = projects => [
+            ...projects.filter(project => project.category === 'jeux'),
+            ...projects.filter(project => project.category !== 'jeux' && project.category !== '3d'),
+            ...projects.filter(project => project.category === '3d')
+        ];
+        let currentProjects = projectsWithGamesFirstAndGraphicsLast(mesProjets);
+        // Fonction pour créer et afficher les blocs de projets.
+        function renderProjects() {
+            // Vide la grille actuelle pour la reconstruire.
             container.innerHTML = '';
 
             // Si, après filtrage, il n'y a aucun projet, affiche un message.
@@ -432,107 +450,46 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            // Crée un élément pour envelopper toutes les diapositives.
-            const slidesWrapper = document.createElement('div');
-            slidesWrapper.className = 'slides';
+            // Crée un élément pour envelopper les blocs de projets.
+            const projectsGrid = document.createElement('div');
+            projectsGrid.className = 'projects-grid';
 
-            // Définit le nombre de diapositives à afficher de chaque côté de la diapositive active.
-            const slidesToShow = 2;
-
-            // Parcourt la liste des projets (filtrés) pour créer une diapositive pour chacun.
-            currentProjects.forEach((projet, i) => {
-                const offset = slideIndex - i;
-                const dir = offset === 0 ? 0 : offset > 0 ? 1 : -1;
-                // Détermine si la diapositive est trop éloignée pour être visible.
-                const isHidden = Math.abs(offset) > slidesToShow;
-
-                // Crée un élément <a> qui servira de diapositive cliquable.
-                const slideLink = document.createElement('a');
-                slideLink.className = 'slide';
+            // Parcourt la liste des projets filtrés pour créer un bloc pour chacun.
+            currentProjects.forEach(projet => {
+                // Crée un élément <a> qui servira de bloc cliquable.
+                const projectLink = document.createElement('a');
 
                 const originalIndex = mesProjets.findIndex(p => p.title === projet.title);
-                slideLink.href = `#overlay${originalIndex + 1}`;
-                slideLink.addEventListener('click', event => {
+                projectLink.className = 'project-card';
+                projectLink.href = `#overlay${originalIndex + 1}`;
+                projectLink.addEventListener('click', event => {
                     event.preventDefault();
                     const scrollTop = window.scrollY;
                     const scrollLeft = window.scrollX;
-                    window.location.hash = slideLink.hash;
+                    window.location.hash = projectLink.hash;
                     window.requestAnimationFrame(() => {
                         window.scrollTo(scrollLeft, scrollTop);
                     });
                 });
 
-                // Applique les styles via des propriétés CSS personnalisées (--offset, --dir) qui contrôlent la position et l'animation en CSS.
-                slideLink.style.setProperty('--offset', offset);
-                slideLink.style.setProperty('--dir', dir);
-                // Définit l'image de fond de la diapositive.
-                slideLink.style.backgroundImage = `url('${projet.image}')`;
+                projectLink.style.backgroundImage = `url('${projet.image}')`;
 
-                // Ajoute des attributs 'data' pour le style et la sélection en JS/CSS.
-                if (isHidden) slideLink.setAttribute('data-hidden', true);
-                if (offset === 0) slideLink.setAttribute('data-active', true);
-
-                // Ajoute le contenu HTML (titre, sous-titre, description) à l'intérieur de la diapositive.
-                slideLink.innerHTML = `
-                    <div class="slide-content-inner">
-                        <h2 class="slide-title">${projet.title}</h2>
-                        <h3 class="slide-subtitle">${projet.subtitle}</h3>
-                        <p class="slide-description">${projet.description}</p>
+                // Ajoute le contenu du bloc à l'intérieur du lien.
+                projectLink.innerHTML = `
+                    <div class="project-card-content">
+                        <h2 class="project-card-title">${projet.title}</h2>
+                        <h3 class="project-card-subtitle">${projet.subtitle}</h3>
+                        <p class="project-card-description">${projet.description}</p>
                     </div>`;
 
-                slidesWrapper.appendChild(slideLink);
+                projectsGrid.appendChild(projectLink);
             });
 
-            // Ajoute le conteneur des diapositives au carrousel principal.
-            container.appendChild(slidesWrapper);
-
-            if (currentProjects.length > 1) {
-                const prevButton = document.createElement('button');
-                prevButton.className = 'carousel-nav prev';
-                prevButton.innerHTML = '‹';
-                prevButton.onclick = () => {
-                    slideIndex = (slideIndex - 1 + currentProjects.length) % currentProjects.length;
-                    // Redessine le carrousel avec le nouvel index.
-                    renderCarousel();
-                };
-
-                const nextButton = document.createElement('button');
-                nextButton.className = 'carousel-nav next';
-                nextButton.innerHTML = '›';
-                nextButton.onclick = () => {
-                    slideIndex = (slideIndex + 1) % currentProjects.length;
-                    // Redessine le carrousel.
-                    renderCarousel();
-                };
-
-                // Ajoute les boutons au conteneur du carrousel.
-                container.appendChild(prevButton);
-                container.appendChild(nextButton);
-            }
-
-            // Active l'effet d'inclinaison 3D sur la diapositive active.
-            initTiltEffect();
+            // Ajoute la grille au conteneur principal.
+            container.appendChild(projectsGrid);
         }
 
-        // Fonction pour gérer l'effet 3D au survol de la souris.
-        function initTiltEffect() {
-            // Sélectionne uniquement la diapositive active.
-            const activeSlide = document.querySelector('.slide[data-active]');
-            if (!activeSlide) return; // Si aucune n'est active, ne fait rien.
-
-            // Ajoute un écouteur pour le mouvement de la souris sur la diapositive active.
-            activeSlide.addEventListener('mousemove', (e) => {
-                const rect = activeSlide.getBoundingClientRect();
-                // Calcule la position de la souris de -0.5 à +0.5 sur les axes X et Y.
-                const x = (e.clientX - rect.left) / rect.width - 0.5;
-                const y = (e.clientY - rect.top) / rect.height - 0.5;
-                // Met à jour les propriétés CSS personnalisées, qui sont utilisées par le CSS pour appliquer la transformation 3D.
-                activeSlide.style.setProperty('--x', x);
-                activeSlide.style.setProperty('--y', y);
-            });
-        }
-
-        // Gestion des filtres intégrée au carrousel.
+        // Gestion des filtres intégrée à la grille.
         const filterButtons = document.querySelectorAll('.conteneur-btn .bouton');
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -543,20 +500,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 const filter = button.dataset.filter;
                 // Si le filtre est 'all', utilise la liste complète des projets.
                 if (filter === 'all') {
-                    currentProjects = [...mesProjets];
+                    currentProjects = projectsWithGamesFirstAndGraphicsLast(mesProjets);
                 } else {
                     // Sinon, filtre la liste des projets en fonction de la catégorie.
                     currentProjects = mesProjets.filter(p => p.category === filter);
                 }
-                // Réinitialise l'index à la première diapositive après avoir changé de filtre.
-                slideIndex = 0;
-                // Redessine le carrousel avec la nouvelle liste de projets.
-                renderCarousel();
+                // Redessine la grille avec la nouvelle liste de projets.
+                renderProjects();
             });
         });
 
-        // Premier appel pour afficher le carrousel au chargement de la page.
-        renderCarousel();
+        // Premier appel pour afficher la grille au chargement de la page.
+        renderProjects();
     }
 
 

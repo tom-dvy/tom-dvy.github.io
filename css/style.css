@@ -829,123 +829,88 @@ body.dark-mode .form-group textarea:focus {
 }
 
 
-/* --- STYLES POUR LE CARROUSEL 3D --- */
+/* --- GRILLE DES PROJETS --- */
 .carousel-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 50vh;
-    perspective: 1000px;
-    margin-top: 50px;
-    position: relative;
+    width: min(1200px, 100%);
+    margin: 20px auto 70px;
+    padding: 0 24px;
+    box-sizing: border-box;
 }
 
-.slides {
+.projects-grid {
     display: grid;
-    transform-style: preserve-3d;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
 }
 
-.slides > .slide {
-    grid-area: 1 / -1;
-    width: min(36vw, 500px);
-    min-width: 320px;
-    max-width: 500px;
-    height: min(46vw, 630px);
-    min-height: 440px;
-    max-height: 630px;
-
+.project-card {
+    min-height: 320px;
     background-size: cover;
     background-position: center;
-
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: transform 0.6s ease, opacity 0.6s ease;
-    opacity: 0; /*Elles sont invisibles par défaut */
-    pointer-events: none; /* Elles ne sont pas cliquables */
+    border: 1px solid rgba(31, 126, 242, 0.35);
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(5, 16, 45, 0.22);
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 25px;
-    transform-style: preserve-3d;
-    transform: translateX(calc(80% * var(--offset))) rotateY(calc(-45deg * var(--dir))) scale(0.9);
+    overflow: hidden;
+    position: relative;
+    isolation: isolate;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.slide[data-hidden="true"] {
-    opacity: 0;
-    visibility: hidden; /* Rend l'élément complètement non-interactif */
-}
-
-/* Style de la slide active */
-.slide[data-active] {
-    opacity: 1;
-    z-index: 2;
-    transform: translateX(0) rotateY(0);
-    pointer-events: auto;
-}
-
-/* Effet 3D au survol de la slide active */
-.slide[data-active]:hover {
-    transition: transform 0.1s; /* Transition rapide pour l'effet */
-    transform: rotateY(calc(var(--x) * 25deg)) rotateX(calc(var(--y) * -25deg));
-}
-
-.slide-content-inner {
-    transform: translateZ(40px); /* Effet de profondeur */
-    color: white;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.slide[data-active] .slide-content-inner {
-    opacity: 1;
-    transition-delay: 0.2s; /* Apparaît après que la slide soit en place */
-}
-
-.slide-title { font-size: 1.8rem; font-weight: bold; margin: 0; }
-.slide-subtitle { font-size: 1rem; margin: 5px 0 15px 0; }
-.slide-description { font-size: 0.9rem; letter-spacing: 0.5px; color: white;}
-.slide-details { margin-top: 15px; border-top: 1px solid rgba(52, 9, 9, 0.4); padding-top: 10px; font-size: 0.8rem; }
-
-/* Boutons de navigation du carrousel */
-.carousel-nav {
-    appearance: none;
+.project-card::before {
+    content: "";
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    color: rgb(20, 20, 94);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    padding: 0;
-    
-    transition: all 0.3s ease;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5, 10, 28, 0.05) 25%, rgba(5, 10, 28, 0.9) 100%);
+    z-index: -1;
 }
 
-.carousel-nav:hover {
-    /* Au survol, le conteneur devient bleu */
-    background: rgb(20, 20, 94);
-    border-color: rgb(20, 20, 94);
-    
-    /* La flèche devient blanche */
+.project-card:hover,
+.project-card:focus-visible {
     color: white;
-    transform: translateY(-50%) scale(1.1);
+    text-decoration: none;
+    transform: translateY(-6px);
+    border-color: #f5a000;
+    box-shadow: 0 18px 34px rgba(5, 16, 45, 0.34), 0 0 20px rgba(245, 160, 0, 0.16);
 }
 
-.carousel-nav.prev {
-    left: 4%;
+.project-card-content {
+    padding: 24px;
+    position: relative;
+    z-index: 1;
 }
-.carousel-nav.next {
-    right: 4%;
+
+.project-card-title {
+    font-size: 1.35rem;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.project-card-subtitle {
+    font-size: 0.95rem;
+    margin: 6px 0 12px;
+    color: #ffd27a;
+}
+
+.project-card-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+@media (max-width: 900px) {
+    .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .carousel-container { padding: 0 16px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card { min-height: 280px; }
 }
 
 
