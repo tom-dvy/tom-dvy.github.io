@@ -275,17 +275,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         },
         {
-            category: "3d",
-            title: "Affiche NDW",
-            subtitle: "Communication Visuelle",
-            description: "Proposition d'affiche pour l'événement Nantes Digital Week.",
-            image: "img/Affiche Beaujoire.PNG",
+            category: "jeux",
+            title: "ComeBack: Muerte Cosmica",
+            subtitle: "Plateformer 2D",
+            description: "Création d'un plateformer shooter 2D, se déroulant dans l'espace",
+            image: "img/ComebackMuerteCosmica/Comeback Muerte Cosmica Screen.png",
             media: [
-                { type: 'image', src: 'img/Affiche Beaujoire.PNG' }
+                { type: 'image', src: 'img/ComebackMuerteCosmica/Comeback Muerte Cosmica Screen.png' },
+                { type: 'youtube', id: 'bgNE4efDX2c' }
             ],
             details: {
-                role: "Graphiste",
-                tools: "Adobe Photoshop, Illustrator"
+                role: "Développeur Gameplay, Level Designer",
+                tools: "Unity"
             }
         },
         {
@@ -387,6 +388,22 @@ document.addEventListener('DOMContentLoaded', function () {
             details: {
                 role: "Développeur Full Stack",
                 tools: "VS Code, Nodejs"
+            }
+        },
+        {
+            category: "jeux",
+            title: "Dungeon Squire",
+            subtitle: "Game Jam",
+            description: "Un écuyer accompagne le héros en gérant son équipement, ses soins et son inventaire.",
+            image: "img/DungeonSquire/DungeonSquireScreen.png",
+            media: [
+                { type: 'image', src: 'img/DungeonSquire/DungeonSquireScreen.png' },
+                { type: 'image', src: 'img/DungeonSquire/DungeonSquireScreen2.png' },
+                { type: 'youtube', id: 'Ok4spj6ADHs' }
+            ],
+            details: {
+                role: "Game Designer, Développeur Gameplay",
+                tools: "Unity"
             }
         }
     ];
