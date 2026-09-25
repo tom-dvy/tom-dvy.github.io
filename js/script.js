@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "jeux",
             title: "Hyrome Fighter",
             subtitle: "Jeu de Combat 2D",
-            description: "Projet de fin de BTS. Un jeu de combat 2D développé avec Scratch.",
+            description: "Projet de fin de BTS. Un jeu de combat 2D développé avec Scratch",
             image: "img/HyromeFighter.PNG",
             media: [
                 { type: 'image', src: 'img/HyromeFighter.PNG' }
@@ -264,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "3d",
             title: "Lego FC Barcelone",
             subtitle: "Modélisation 3D",
-            description: "Création d'un personnage LEGO sur Blender lors d'un workshop à l'IIM.",
+            description: "Création d'un personnage LEGO sur Blender lors d'un workshop à l'IIM",
             image: "img/DAVY_Tom_LegoFCB.png",
             media: [
                 { type: 'image', src: 'img/DAVY_Tom_LegoFCB.png' }
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "app",
             title: "Dashboard Énergie",
             subtitle: "Data visualisation",
-            description: "Interface pour la visualisation de données de consommation énergétique.",
+            description: "Interface pour la visualisation de données de consommation énergétique",
             image: "img/ConsoEnergie.PNG",
             media: [
                 { type: 'image', src: 'img/ConsoEnergie.PNG' }
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "app",
             title: "Grainothèque Connectée",
             subtitle: "Site Web",
-            description: "Conception et prototypage d'un site pour une grainothèque connectée.",
+            description: "Conception et prototypage d'un site pour une grainothèque connectée",
             image: "img/ihm_accueil.png",
             media: [
                 { type: 'image', src: 'img/ihm_accueil.png' }
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "app",
             title: "Pokédex",
             subtitle: "Application",
-            description: "Conception d'une application Pokédex fonctionnelle et accessible.",
+            description: "Conception d'une application Pokédex fonctionnelle et accessible",
             image: "img/pokedex.png",
             media: [
                 { type: 'image', src: 'img/pokedex.png' },
@@ -337,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "3d",
             title: "Vegeta 3D",
             subtitle: "Modélisation 3D",
-            description: "Création d'un personnage 3D de Vegeta sur Blender.",
+            description: "Création d'un personnage 3D de Vegeta sur Blender",
             image: "img/3D/Vegeta_Screen.png",
             media: [
                 { type: 'image', src: 'img/3D/Vegeta_Screen.png' },
@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "en_cours",
             title: "Prototype de jeu type Assassin's Creed",
             subtitle: "Prototypage de jeu",
-            description: "Prototype d'un jeu de type Assassin's Creed.",
+            description: "Prototype d'un jeu de type Assassin's Creed",
             image: "img/AC/AC_Screen.png",
             media: [
                 { type: 'youtube', id: '3WfGcFnUn7Y' }
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "app",
             title: "Lecteur de musique",
             subtitle: "Application",
-            description: "Prototype d'un lecteur de musique.",
+            description: "Prototype d'un lecteur de musique",
             image: "img/Audino/AudinoScreen.png",
             media: [
                 { type: 'youtube', id: 'SAhzcfc2Dc8' }
@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "jeux",
             title: "Dungeon Squire",
             subtitle: "Game Jam",
-            description: "Un écuyer accompagne le héros en gérant son équipement, ses soins et son inventaire.",
+            description: "Un écuyer accompagne le héros en gérant son équipement, ses soins et son inventaire",
             image: "img/DungeonSquire/DungeonSquireScreen.png",
             media: [
                 { type: 'image', src: 'img/DungeonSquire/DungeonSquireScreen.png' },
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "jeux",
             title: "Guimi Peanuts",
             subtitle: "Intégration UI sur Unity",
-            description: "Reproduction d'une interface et de ses transitions à partir d'assets fournis.",
+            description: "Reproduction d'une interface et de ses transitions à partir d'assets fournis",
             image: "img/GuimiPeanuts/gpscreen.png",
             media: [
                 { type: 'image', src: 'img/GuimiPeanuts/gpscreen.png' },
@@ -419,6 +419,21 @@ document.addEventListener('DOMContentLoaded', function () {
             ],
             details: {
                 role: "Développeur UI",
+                tools: "Unity"
+            }
+        },
+        {
+            category: "jeux",
+            title: "Shovel Oven",
+            subtitle: "Jeu compétitif en versus",
+            description: "Préparez vos pizzas à la bonne température et battez votre adversaire en trois minutes",
+            image: "img/ShovelOven/ShovelOvenScreen1.png",
+            media: [
+                { type: 'image', src: 'img/ShovelOven/ShovelOvenScreen1.png' },
+                { type: 'image', src: 'img/ShovelOven/ShovelOvenScreen2.png' }
+            ],
+            details: {
+                role: "Développeur Gameplay",
                 tools: "Unity"
             }
         }
