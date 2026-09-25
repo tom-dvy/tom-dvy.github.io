@@ -494,6 +494,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 role: "Développeur Gameplay, Développeur UI",
                 tools: "Unreal Engine 5"
             }
+        },
+        {
+            category: "jeux",
+            title: "Cursed Wedding",
+            subtitle: "Game Jam",
+            description: "FPS survival réalisé en équipe de trois lors d'une Game Jam sur le thème de l'union",
+            image: "img/CursedWedding/Logo.png",
+            media: [
+                { type: 'image', src: 'img/CursedWedding/CW_Screen.png' },
+                { type: 'image', src: 'img/CursedWedding/CW_Screen2.png' },
+                { type: 'image', src: 'img/CursedWedding/CW_Screen3.png' }
+            ],
+            details: {
+                role: "Développeur Gameplay et UI",
+                tools: "Unity"
+            }
         }
     ];
 
