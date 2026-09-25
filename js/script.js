@@ -436,6 +436,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 role: "Développeur Gameplay",
                 tools: "Unity"
             }
+        },
+        {
+            category: "jeux",
+            title: "Puissance 4",
+            subtitle: "Workshop Vibecoding",
+            description: "Jeu de Puissance 4 en HTML, CSS et JavaScript avec modes IA, deux joueurs et Tetris.",
+            image: "img/Puissance4/Puissance4_mainPics.png",
+            media: [
+                { type: 'image', src: 'img/Puissance4/Puissance4_mainPics.png' },
+                { type: 'image', src: 'img/Puissance4/Puissance4_SecondPics.png' },
+                { type: 'youtube', id: '2exLNHEqYQo' }
+            ],
+            details: {
+                role: "Développeur Front-End",
+                tools: "HTML, CSS, JavaScript"
+            }
+        },
+        {
+            category: "jeux",
+            title: "Echoes Of Sahara",
+            subtitle: "Jeu de course mobile",
+            description: "Jeu de course compétitif sur mobile avec circuits procéduraux, items et système de ghost",
+            image: "img/EchoesOfSahara/course.png",
+            media: [
+                { type: 'image', src: 'img/EchoesOfSahara/course.png' },
+                { type: 'image', src: 'img/EchoesOfSahara/menu.png' },
+                { type: 'image', src: 'img/EchoesOfSahara/friends.png' },
+                { type: 'image', src: 'img/EchoesOfSahara/accessibilité.png' },
+                { type: 'image', src: 'img/EchoesOfSahara/splashscreen.png' },
+                { type: 'youtube', id: 'IvhJrZUZUf8' }
+            ],
+            details: {
+                role: "Développeur Gameplay, UI et Mobile",
+                tools: "Unity, LitMotion"
+            }
         }
     ];
 
