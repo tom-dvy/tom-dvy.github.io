@@ -80,6 +80,17 @@ body.is-leaving {
     position: relative;
     overflow: hidden;
 }
+.hero-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+.projects-btn {
+    background: linear-gradient(135deg, #e78300 0%, #c56900 100%);
+    box-shadow: 0 10px 22px rgba(231, 131, 0, 0.24);
+}
 .download-btn::before {
     content: "";
     position: absolute;
@@ -98,6 +109,10 @@ body.is-leaving {
 }
 .download-btn:hover::before {
     transform: translateX(120%);
+}
+.projects-btn:hover {
+    background: linear-gradient(135deg, #c56900 0%, #a54f00 100%);
+    box-shadow: 0 16px 28px rgba(165, 79, 0, 0.3);
 }
 
 /* --- Menu de Navigation --- */
