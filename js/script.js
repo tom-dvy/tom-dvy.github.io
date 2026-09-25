@@ -521,13 +521,43 @@ document.addEventListener('DOMContentLoaded', function () {
         // Si le conteneur n'est pas trouvé (on n'est pas sur la page du portfolio), on arrête la fonction.
         if (!container) return;
 
-        // Crée une copie du tableau des projets pour pouvoir la filtrer sans modifier l'original.
-        const projectsWithGamesFirstAndGraphicsLast = projects => [
-            ...projects.filter(project => project.category === 'jeux'),
-            ...projects.filter(project => project.category !== 'jeux' && project.category !== '3d'),
-            ...projects.filter(project => project.category === '3d')
+        const projectOrder = [
+            "Alone In The Dark",
+            "Shovel Oven",
+            "Guimi Peanuts",
+            "DiskGame",
+            "Dungeon Squire",
+            "Cursed Wedding",
+            "ComeBack: Muerte Cosmica",
+            "Echoes Of Sahara",
+            "Puissance 4",
+            "Hyrome Fighter",
+            "Pokédex",
+            "Grainothèque Connectée",
+            "Lecteur de musique",
+            "Dashboard Énergie",
+            "Lego FC Barcelone",
+            "Texturing d'appartement",
+            "Vegeta 3D"
         ];
-        let currentProjects = projectsWithGamesFirstAndGraphicsLast(mesProjets);
+
+        const orderProjects = projects => projectOrder
+            .map(title => projects.find(project => project.title === title))
+            .filter(Boolean);
+
+        const projectsForFilter = filter => {
+            if (filter === 'en_cours') {
+                return mesProjets.filter(project => project.category === 'en_cours');
+            }
+
+            const availableProjects = filter === 'all'
+                ? mesProjets.filter(project => project.category !== 'en_cours')
+                : mesProjets.filter(project => project.category === filter);
+
+            return orderProjects(availableProjects);
+        };
+
+        let currentProjects = projectsForFilter('all');
         // Fonction pour créer et afficher les blocs de projets.
         function renderProjects() {
             // Vide la grille actuelle pour la reconstruire.
@@ -587,13 +617,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 button.classList.add('active');
 
                 const filter = button.dataset.filter;
-                // Si le filtre est 'all', utilise la liste complète des projets.
-                if (filter === 'all') {
-                    currentProjects = projectsWithGamesFirstAndGraphicsLast(mesProjets);
-                } else {
-                    // Sinon, filtre la liste des projets en fonction de la catégorie.
-                    currentProjects = mesProjets.filter(p => p.category === filter);
-                }
+                currentProjects = projectsForFilter(filter);
                 // Redessine la grille avec la nouvelle liste de projets.
                 renderProjects();
             });

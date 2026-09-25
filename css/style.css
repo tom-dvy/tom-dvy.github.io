@@ -355,6 +355,25 @@ body.is-leaving {
 
 .bouton.active, .bouton:hover { background: linear-gradient(135deg, rgb(20, 20, 94) 0%, #0d3a8f 100%); color: #ffffff; text-decoration: none; transform: translateY(-2px); box-shadow: 0 12px 24px rgba(20, 20, 94, 0.18); }
 
+.filter-separator {
+    width: 1px;
+    margin: 0 4px;
+    background: rgba(20, 20, 94, 0.28);
+}
+
+.bouton-en-cours {
+    border-color: #e78300;
+    color: #a85b00;
+}
+
+.bouton-en-cours.active,
+.bouton-en-cours:hover {
+    background: linear-gradient(135deg, #e78300 0%, #f5a000 100%);
+    border-color: #e78300;
+    color: #ffffff;
+    box-shadow: 0 12px 24px rgba(231, 131, 0, 0.28);
+}
+
 #projets { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
 
 .projet-item {
@@ -1020,6 +1039,7 @@ h1#Nom {
     .navbar .menu a { display: block; }
 
     .conteneur-btn { flex-direction: column; gap: 10px; }
+    .filter-separator { width: 80%; height: 1px; margin: 4px 0; }
     .projet-item, .projet-item.hidden { width: 80% !important; }
     .popup_block { width: 90%; }
     #contact {
