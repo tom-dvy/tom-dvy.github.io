@@ -307,10 +307,14 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "app",
             title: "Grainothèque Connectée",
             subtitle: "Site Web",
-            description: "Conception et prototypage d'un site pour une grainothèque connectée",
+            description: "IHM de gestion d'une grainothèque connectée avec consultation du stock et fiches de graines.",
             image: "img/ihm_accueil.png",
             media: [
-                { type: 'image', src: 'img/ihm_accueil.png' }
+                { type: 'image', src: 'img/ihm_accueil.png' },
+                { type: 'image', src: 'img/DiagrammeClasseGrainotheque.png' },
+                { type: 'image', src: 'img/IHMstockGrainotheque.png' },
+                { type: 'image', src: 'img/PopUpGrainotheque.png' },
+                { type: 'image', src: 'img/SCenarioUtilisationGrainotheque.png' }
             ],
             details: {
                 role: "Développeur Front-End et Back-End",
@@ -441,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function () {
             category: "jeux",
             title: "Puissance 4",
             subtitle: "Workshop Vibecoding",
-            description: "Jeu de Puissance 4 en HTML, CSS et JavaScript avec modes IA, deux joueurs et Tetris.",
+            description: "Jeu de Puissance 4 en HTML, CSS et JavaScript avec modes IA, deux joueurs et Tetris",
             image: "img/Puissance4/Puissance4_mainPics.png",
             media: [
                 { type: 'image', src: 'img/Puissance4/Puissance4_mainPics.png' },
@@ -470,6 +474,25 @@ document.addEventListener('DOMContentLoaded', function () {
             details: {
                 role: "Développeur Gameplay, UI et Mobile",
                 tools: "Unity, LitMotion"
+            }
+        },
+        {
+            category: "jeux",
+            title: "DiskGame",
+            subtitle: "Puzzle game FPS",
+            description: "Puzzle game à la première personne sur Unreal Engine 5, basé sur des disques aux effets différents",
+            image: "img/DiskGame/MainMenuScreen.png",
+            media: [
+                { type: 'image', src: 'img/DiskGame/MainMenuScreen.png' },
+                { type: 'image', src: 'img/DiskGame/DiskWheelUI.png' },
+                { type: 'image', src: 'img/DiskGame/SettingsUI.png' },
+                { type: 'image', src: 'img/DiskGame/ConventionNommageScreen.png' },
+                { type: 'image', src: 'img/DiskGame/Discord_Screen.png' },
+                { type: 'youtube', id: 'ilSlq3P8akM' }
+            ],
+            details: {
+                role: "Développeur Gameplay, Développeur UI",
+                tools: "Unreal Engine 5"
             }
         }
     ];
