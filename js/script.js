@@ -53,11 +53,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- GESTION DES TRANSITIONS DE PAGE ---
     // Sélectionne l'élément <body> de la page pour lui appliquer des animations.
     const body = document.body;
+    const transitionOverlay = document.createElement('div');
+    const loader = document.createElement('div');
+    transitionOverlay.className = 'page-transition-overlay';
+    loader.className = 'loader';
+    loader.setAttribute('role', 'status');
+    loader.setAttribute('aria-label', 'Chargement');
+    transitionOverlay.append(loader);
+    document.documentElement.append(transitionOverlay);
 
     // ANIMATION D'ENTRÉE : faire apparaître la page
     window.addEventListener('load', () => {
         setTimeout(() => {
             body.classList.add('is-visible');
+            transitionOverlay.classList.add('is-hidden');
         }, 50);
     });
 
@@ -83,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.preventDefault();
 
                 // On ajoute la classe qui déclenche l'animation de sortie (fade out et déplacement vers le haut).
+                transitionOverlay.classList.remove('is-hidden');
                 body.classList.add('is-leaving');
 
                 // On attend la fin de l'animation de sortie avant de réellement changer de page.

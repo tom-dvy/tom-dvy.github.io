@@ -719,6 +719,62 @@ html {
     background-color: whitesmoke;
 }
 
+.page-transition-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+
+.page-transition-overlay.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader {
+    width: 100px;
+    height: 45px;
+    position: relative;
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(#14145e 0 0) 21px 17px / 4px 12px,
+        linear-gradient(#14145e 0 0) 17px 21px / 12px 4px,
+        radial-gradient(circle, #e78300 3px, transparent 3.5px) 70px 16px / 7px 7px,
+        radial-gradient(circle, #e78300 3px, transparent 3.5px) 79px 21px / 7px 7px,
+        radial-gradient(circle, #e78300 3px, transparent 3.5px) 70px 26px / 7px 7px,
+        radial-gradient(circle, #e78300 3px, transparent 3.5px) 61px 21px / 7px 7px,
+        #fff;
+    background-repeat: no-repeat;
+    clip-path: polygon(8% 18%, 37% 18%, 43% 4%, 57% 4%, 63% 18%, 92% 18%, 97% 24%, 100% 70%, 96% 84%, 88% 100%, 80% 96%, 68% 67%, 32% 67%, 20% 96%, 12% 100%, 4% 84%, 0 70%, 3% 24%);
+}
+
+.loader::after {
+    transform: perspective(300px) translateZ(0);
+}
+
+.page-transition-overlay:not(.is-hidden) .loader::after {
+    animation: l9 1s infinite;
+}
+
+@keyframes l9 {
+    to {
+        transform: perspective(300px) translateZ(100px);
+        opacity: 0;
+    }
+}
+
 body {
     opacity: 0;
     transform: translateY(14px) scale(0.995);
@@ -746,9 +802,13 @@ body.is-leaving {
     }
 
     body,
+    .page-transition-overlay,
+    .loader,
+    .loader::after,
     .overlay,
     .popup_block {
         transition: none;
+        animation: none;
     }
 }
 
