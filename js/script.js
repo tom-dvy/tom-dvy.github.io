@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
         languageToggle.textContent = isEnglish ? 'FR' : 'EN';
         languageToggle.setAttribute('aria-label', isEnglish ? 'Passer en français' : 'Switch to English');
 
+        const cvLink = document.querySelector('#CV .download-btn');
+        if (cvLink) {
+            cvLink.href = isEnglish ? 'link/DAVY_Tom_ENG_CV.pdf' : 'link/DAVY_Tom_CV.pdf';
+        }
+
         languageToggle.addEventListener('click', () => {
             const switchToEnglish = languageToggle.textContent === 'EN';
             if (switchToEnglish) {
