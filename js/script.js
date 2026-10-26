@@ -527,6 +527,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 role: "Développeur Gameplay et UI",
                 tools: "Unity"
             }
+        },
+        {
+            category: "jeux",
+            title: "LightCycle - Unreal Week",
+            subtitle: "Jeu de course multijoueur local",
+            description: "Piégez votre adversaire dans une course inspirée de Tron, jouable à deux en local",
+            image: "img/UndergroundUnrealWeek/Screen.png",
+            media: [
+                { type: 'image', src: 'img/UndergroundUnrealWeek/Screen.png' },
+                { type: 'image', src: 'img/UndergroundUnrealWeek/GestionPointTrainée.png' },
+                { type: 'youtube', id: 'uR84gc4obYA' }
+            ],
+            details: {
+                role: "Programmeur gameplay, équipe de 2",
+                tools: "Unreal Engine"
+            }
         }
     ];
 
@@ -543,6 +559,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "Shovel Oven",
             "Guimi Peanuts",
             "DiskGame",
+            "LightCycle - Unreal Week",
             "Dungeon Squire",
             "Cursed Wedding",
             "ComeBack: Muerte Cosmica",
