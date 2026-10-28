@@ -530,7 +530,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         {
             category: "jeux",
-            title: "LightCycle - Unreal Week",
+            title: "Underground - Unreal Week",
             subtitle: "Jeu de course multijoueur local",
             description: "Piégez votre adversaire dans une course inspirée de Tron, jouable à deux en local",
             image: "img/UndergroundUnrealWeek/Screen.png",
@@ -559,7 +559,7 @@ document.addEventListener('DOMContentLoaded', function () {
             "Shovel Oven",
             "Guimi Peanuts",
             "DiskGame",
-            "LightCycle - Unreal Week",
+            "Underground - Unreal Week",
             "Dungeon Squire",
             "Cursed Wedding",
             "ComeBack: Muerte Cosmica",
