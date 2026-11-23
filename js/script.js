@@ -546,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     ];
 
-    // --- GESTION DU PORTFOLIO (GRILLE + FILTRES) ---
+    // --- GESTION DU PORTFOLIO (CARROUSEL, GRILLE ET FILTRES) ---
     // Définit la fonction principale pour initialiser le portfolio.
     function initPortfolio() {
         // Sélectionne le conteneur du carrousel.
@@ -591,13 +591,124 @@ document.addEventListener('DOMContentLoaded', function () {
             return orderProjects(availableProjects);
         };
 
+        const featuredProjectTitles = ["Alone In The Dark", "Shovel Oven", "Pokédex"];
+        const featuredProjects = featuredProjectTitles.map(title => {
+            const project = mesProjets.find(item => item.title === title);
+            if (!project) {
+                throw new Error(`Projet en vedette introuvable : ${title}`);
+            }
+            return project;
+        });
+
+        let currentFilter = 'featured';
         let currentProjects = projectsForFilter('all');
-        // Fonction pour créer et afficher les blocs de projets.
+        let featuredCarouselIndex = 0;
+
+        function createProjectCard(projet) {
+            const projectLink = document.createElement('a');
+            const originalIndex = mesProjets.findIndex(item => item.title === projet.title);
+            projectLink.className = 'project-card';
+            projectLink.href = `#overlay${originalIndex + 1}`;
+            projectLink.addEventListener('click', event => {
+                event.preventDefault();
+                const scrollTop = window.scrollY;
+                const scrollLeft = window.scrollX;
+                window.location.hash = projectLink.hash;
+                window.requestAnimationFrame(() => {
+                    window.scrollTo(scrollLeft, scrollTop);
+                });
+            });
+            projectLink.style.backgroundImage = `url('${projet.image}')`;
+
+            projectLink.innerHTML = `
+                <div class="project-card-content">
+                    <h2 class="project-card-title">${projet.title}</h2>
+                    <h3 class="project-card-subtitle">${projet.subtitle}</h3>
+                    <p class="project-card-description">${projet.description}</p>
+                </div>`;
+
+            return projectLink;
+        }
+
+        function renderFeaturedCarousel() {
+            const carousel = document.createElement('div');
+            carousel.className = 'featured-carousel';
+            carousel.setAttribute('role', 'region');
+            carousel.setAttribute('aria-label', 'Projets en vedette');
+
+            const viewport = document.createElement('div');
+            viewport.className = 'featured-carousel-viewport';
+
+            const track = document.createElement('div');
+            track.className = 'featured-carousel-track';
+            const slides = featuredProjects.map((project, index) => {
+                const slide = createProjectCard(project);
+                slide.classList.add('featured-project-slide');
+                slide.setAttribute('aria-roledescription', 'diapositive');
+                slide.setAttribute('aria-label', `${project.title}, ${index + 1} sur ${featuredProjects.length}`);
+                slide.setAttribute('aria-hidden', String(index !== featuredCarouselIndex));
+                slide.tabIndex = index === featuredCarouselIndex ? 0 : -1;
+                track.appendChild(slide);
+                return slide;
+            });
+            viewport.appendChild(track);
+            carousel.appendChild(viewport);
+
+            const indicators = featuredProjects.map((project, index) => {
+                const indicator = document.createElement('button');
+                indicator.type = 'button';
+                indicator.className = 'featured-carousel-indicator';
+                indicator.setAttribute('aria-label', `Afficher ${project.title}`);
+                indicator.setAttribute('aria-pressed', String(index === featuredCarouselIndex));
+                indicator.addEventListener('click', () => setFeaturedCarouselIndex(index));
+                return indicator;
+            });
+
+            function setFeaturedCarouselIndex(index) {
+                featuredCarouselIndex = (index + featuredProjects.length) % featuredProjects.length;
+                track.style.transform = `translateX(-${featuredCarouselIndex * 100}%)`;
+                slides.forEach((slide, slideIndex) => {
+                    const isActive = slideIndex === featuredCarouselIndex;
+                    slide.setAttribute('aria-hidden', String(!isActive));
+                    slide.tabIndex = isActive ? 0 : -1;
+                    indicators[slideIndex].setAttribute('aria-pressed', String(isActive));
+                });
+            }
+
+            const previousButton = document.createElement('button');
+            previousButton.type = 'button';
+            previousButton.className = 'featured-carousel-control featured-carousel-prev';
+            previousButton.setAttribute('aria-label', 'Projet précédent');
+            previousButton.innerHTML = '<i class="fas fa-chevron-left" aria-hidden="true"></i>';
+            previousButton.addEventListener('click', () => setFeaturedCarouselIndex(featuredCarouselIndex - 1));
+
+            const nextButton = document.createElement('button');
+            nextButton.type = 'button';
+            nextButton.className = 'featured-carousel-control featured-carousel-next';
+            nextButton.setAttribute('aria-label', 'Projet suivant');
+            nextButton.innerHTML = '<i class="fas fa-chevron-right" aria-hidden="true"></i>';
+            nextButton.addEventListener('click', () => setFeaturedCarouselIndex(featuredCarouselIndex + 1));
+
+            const indicatorGroup = document.createElement('div');
+            indicatorGroup.className = 'featured-carousel-indicators';
+            indicatorGroup.setAttribute('role', 'group');
+            indicatorGroup.setAttribute('aria-label', 'Choisir un projet en vedette');
+            indicators.forEach(indicator => indicatorGroup.appendChild(indicator));
+            carousel.append(previousButton, nextButton, indicatorGroup);
+
+            container.appendChild(carousel);
+            setFeaturedCarouselIndex(featuredCarouselIndex);
+        }
+
+        // Fonction pour afficher les projets ou le carrousel en vedette.
         function renderProjects() {
-            // Vide la grille actuelle pour la reconstruire.
             container.innerHTML = '';
 
-            // Si, après filtrage, il n'y a aucun projet, affiche un message.
+            if (currentFilter === 'featured') {
+                renderFeaturedCarousel();
+                return;
+            }
+
             if (currentProjects.length === 0) {
                 container.innerHTML = '<p>Aucun projet dans cette catégorie.</p>';
                 return;
@@ -609,33 +720,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Parcourt la liste des projets filtrés pour créer un bloc pour chacun.
             currentProjects.forEach(projet => {
-                // Crée un élément <a> qui servira de bloc cliquable.
-                const projectLink = document.createElement('a');
-
-                const originalIndex = mesProjets.findIndex(p => p.title === projet.title);
-                projectLink.className = 'project-card';
-                projectLink.href = `#overlay${originalIndex + 1}`;
-                projectLink.addEventListener('click', event => {
-                    event.preventDefault();
-                    const scrollTop = window.scrollY;
-                    const scrollLeft = window.scrollX;
-                    window.location.hash = projectLink.hash;
-                    window.requestAnimationFrame(() => {
-                        window.scrollTo(scrollLeft, scrollTop);
-                    });
-                });
-
-                projectLink.style.backgroundImage = `url('${projet.image}')`;
-
-                // Ajoute le contenu du bloc à l'intérieur du lien.
-                projectLink.innerHTML = `
-                    <div class="project-card-content">
-                        <h2 class="project-card-title">${projet.title}</h2>
-                        <h3 class="project-card-subtitle">${projet.subtitle}</h3>
-                        <p class="project-card-description">${projet.description}</p>
-                    </div>`;
-
-                projectsGrid.appendChild(projectLink);
+                projectsGrid.appendChild(createProjectCard(projet));
             });
 
             // Ajoute la grille au conteneur principal.
@@ -650,9 +735,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
-                const filter = button.dataset.filter;
-                currentProjects = projectsForFilter(filter);
-                // Redessine la grille avec la nouvelle liste de projets.
+                currentFilter = button.dataset.filter;
+                if (currentFilter !== 'featured') {
+                    currentProjects = projectsForFilter(currentFilter);
+                }
                 renderProjects();
             });
         });
