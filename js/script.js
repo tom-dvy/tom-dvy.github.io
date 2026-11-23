@@ -604,7 +604,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let currentProjects = projectsForFilter('all');
         let featuredCarouselIndex = 0;
 
-        function createProjectCard(projet) {
+        function createProjectCard(projet, featured = false) {
             const projectLink = document.createElement('a');
             const originalIndex = mesProjets.findIndex(item => item.title === projet.title);
             projectLink.className = 'project-card';
@@ -620,11 +620,15 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             projectLink.style.backgroundImage = `url('${projet.image}')`;
 
+            const projectDetails = featured
+                ? `<h3 class="project-card-subtitle">${projet.details.tools}</h3>`
+                : `<h3 class="project-card-subtitle">${projet.subtitle}</h3>
+                    <p class="project-card-description">${projet.description}</p>`;
+
             projectLink.innerHTML = `
                 <div class="project-card-content">
                     <h2 class="project-card-title">${projet.title}</h2>
-                    <h3 class="project-card-subtitle">${projet.subtitle}</h3>
-                    <p class="project-card-description">${projet.description}</p>
+                    ${projectDetails}
                 </div>`;
 
             return projectLink;
@@ -642,10 +646,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const track = document.createElement('div');
             track.className = 'featured-carousel-track';
             const slides = featuredProjects.map((project, index) => {
-                const slide = createProjectCard(project);
+                const slide = createProjectCard(project, true);
                 slide.classList.add('featured-project-slide');
                 slide.setAttribute('aria-roledescription', 'diapositive');
-                slide.setAttribute('aria-label', `${project.title}, ${index + 1} sur ${featuredProjects.length}`);
+                slide.setAttribute('aria-label', `${project.title}, ${project.details.tools}, ${index + 1} sur ${featuredProjects.length}`);
                 slide.setAttribute('aria-hidden', String(index !== featuredCarouselIndex));
                 slide.tabIndex = index === featuredCarouselIndex ? 0 : -1;
                 track.appendChild(slide);
