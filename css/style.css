@@ -68,6 +68,25 @@ body.is-leaving {
 }
 .image_rs { width: 5%; transition: opacity 0.3s; }
 .image_rs:hover { opacity: 0.6; }
+.hero-email {
+    display: table;
+    margin: 8px auto;
+    padding: 6px 12px;
+    background: rgba(16, 25, 54, 0.88);
+    border: 1px solid rgba(245, 160, 0, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(7, 16, 45, 0.2);
+    font-size: 15px;
+}
+.hero-email a {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+}
+.hero-email a:hover {
+    color: #f5a000;
+    text-decoration: underline;
+}
 
 /* Bouton CV */
 .download-btn {
