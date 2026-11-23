@@ -61,7 +61,11 @@ body.is-leaving {
     min-height: 90vh;
 }
 
-.pp { width: 15%; }
+.pp {
+    display: block;
+    width: 14%;
+    margin: 0 auto 20px;
+}
 .image_rs { width: 5%; transition: opacity 0.3s; }
 .image_rs:hover { opacity: 0.6; }
 
@@ -1013,11 +1017,26 @@ body.dark-mode .form-group textarea:focus {
 /* Import de la police Montserrat */
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
+.hero-intro {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 6px 16px 12px;
+    background: rgba(16, 25, 54, 0.68);
+    border: 1px solid rgba(245, 160, 0, 0.35);
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(7, 16, 45, 0.2);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
 /* Conteneur pour le SVG pour le dimensionner correctement */
 .animated-name-container {
     width: 100%;
-    max-width: 400px; /* Agrandir/rétrécir le nom */
+    max-width: 340px; /* Agrandir/rétrécir le nom */
     margin: 0px auto 0 auto; /* Espace au-dessus et centrage horizontal */
+    transform: translateY(-8px);
 }
 
 /* Styles du SVG et de la police */
@@ -1028,6 +1047,26 @@ body.dark-mode .form-group textarea:focus {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 8em;
+}
+
+.hero-role,
+.hero-tagline {
+    text-align: center;
+}
+
+.hero-role {
+    margin: -18px 0 6px;
+    color: #f5a000;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.hero-tagline {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 500;
 }
 
 /* Styles pour les contours animés */
@@ -1078,7 +1117,7 @@ h1#Nom {
 
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
-    .pp { width: 30%; }
+    .pp { width: 28%; }
     .image_rs { width: 10%; }
     #entete { min-height: auto; padding: 40px 20px; }
 
