@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             category: "jeux",
             title: "Alone In The Dark",
+            genre: "Survival FPS",
             subtitle: "Game Programming",
             description: "Création d'un jeu de survie spatial sur Unreal Engine 5",
             image: "img/AloneInTheDark/environement.png",
@@ -339,6 +340,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             category: "app",
             title: "Pokédex",
+            genre: "Application Pokédex",
             subtitle: "Application",
             description: "Conception d'une application Pokédex fonctionnelle et accessible",
             image: "img/pokedex.png",
@@ -444,6 +446,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             category: "jeux",
             title: "Shovel Oven",
+            genre: "Jeu compétitif en versus",
             subtitle: "Jeu compétitif en versus",
             description: "Préparez vos pizzas à la bonne température et battez votre adversaire en trois minutes",
             image: "img/ShovelOven/ShovelOvenScreen1.png",
@@ -624,10 +627,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 ? `<h3 class="project-card-subtitle">${projet.details.tools}</h3>`
                 : `<h3 class="project-card-subtitle">${projet.subtitle}</h3>
                     <p class="project-card-description">${projet.description}</p>`;
+            const projectTitle = featured ? projet.genre : projet.title;
 
             projectLink.innerHTML = `
                 <div class="project-card-content">
-                    <h2 class="project-card-title">${projet.title}</h2>
+                    <h2 class="project-card-title">${projectTitle}</h2>
                     ${projectDetails}
                 </div>`;
 
